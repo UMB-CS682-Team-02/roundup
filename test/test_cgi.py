@@ -501,7 +501,7 @@ class testChartGeneration(object):
 
         # same as above just different method - barchart - descending
         # in test database, activate-serie-1 == 'critical'
-        # in test database, activate-serie-2 == 'urgent'
+        # in test database, activate-serie-2 == 'urgent' .
         # test accordingly
         self.assertEqual('urgent',
             ret_dom.xpath('(//*[@class="legends"])[1]'
