@@ -1934,10 +1934,16 @@ class Client:
 
             for p in prefix:
                 # if last element of STATIC_FILES ends with '/-',
+<<<<<<< HEAD
                 # or \- on windows, we failed to find the file
                 # and should not look in TEMPLATES. So raise exception.
                 if (dir_option == 'STATIC_FILES' and p[-1:] == '-' and
                     p[-2:-1] in ('/', '\\')):
+=======
+                # we failed to find the file and we should
+                # not look in TEMPLATES. So raise exception.
+                if dir_option == 'STATIC_FILES' and p[-2:] == '/-':
+>>>>>>> main
                     raise NotFound(file)
 
                 # ensure the load doesn't try to poke outside

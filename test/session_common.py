@@ -47,6 +47,7 @@ class SessionTest(object):
         self.otks = self.db.getOTKManager()
 
     def tearDown(self):
+<<<<<<< HEAD
         if hasattr(self, 'sessions'):
             if not hasattr(self.sessions, 'conn'):
                 # only do this for file based databases that do not
@@ -59,6 +60,8 @@ class SessionTest(object):
                 # have a conn(ection). If they have a connection
                 # mysql throws an error when closing self.db.
                 self.otks.close()
+=======
+>>>>>>> main
         if hasattr(self, 'db'):
             self.db.close()
         if os.path.exists(config.DATABASE):

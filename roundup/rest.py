@@ -440,10 +440,13 @@ class RestfulInstance(object):
 
     api_version = None
 
+<<<<<<< HEAD
     # allow 10M row response - can change using interfaces.py
     # limit is 1 less than this size.
     max_response_row_size = 10000001
 
+=======
+>>>>>>> main
     def __init__(self, client, db):
         self.client = client
         self.db = db
@@ -799,12 +802,19 @@ class RestfulInstance(object):
         exact_props = {}
         page = {
             'size': None,
+<<<<<<< HEAD
             'index': 1,   # setting just size starts at page 1
+=======
+            'index': 1   # setting just size starts at page 1
+>>>>>>> main
         }
         verbose = 1
         display_props = set()
         sort = []
+<<<<<<< HEAD
         group = []
+=======
+>>>>>>> main
         for form_field in input.value:
             key = form_field.name
             value = form_field.value
@@ -842,6 +852,7 @@ class RestfulInstance(object):
                         raise (Unauthorised(
                             'User does not have search permission on "%s.%s"'
                             % (class_name, pn)))
+<<<<<<< HEAD
             elif key == "@group":
                 f = value.split(",")
                 for p in f:
@@ -865,6 +876,8 @@ class RestfulInstance(object):
                         raise (Unauthorised(
                             'User does not have search permission on "%s.%s"'
                             % (class_name, pn)))
+=======
+>>>>>>> main
             elif key.startswith("@"):
                 # ignore any unsupported/previously handled control key
                 # like @apiver
@@ -936,6 +949,7 @@ class RestfulInstance(object):
         kw = {}
         if sort:
             l.append(sort)
+<<<<<<< HEAD
         if group:
             l.append(group)
         if exact_props:
@@ -951,15 +965,24 @@ class RestfulInstance(object):
                         "max_size": self.max_response_row_size,
                     })
             kw['limit'] = self.max_response_row_size
+=======
+        if exact_props:
+            kw['exact_match_spec'] = exact_props
+        if page['size'] is not None and page['size'] > 0:
+            kw['limit'] = page['size']
+>>>>>>> main
             if page['index'] is not None and page['index'] > 1:
                 kw['offset'] = (page['index'] - 1) * page['size']
         obj_list = class_obj.filter(None, *l, **kw)
 
+<<<<<<< HEAD
         # Have we hit the max number of returned rows?
         # If so there may be more data that the client
         # has to explicitly page through using offset/@page_index.
         overflow = len(obj_list) == self.max_response_row_size
 
+=======
+>>>>>>> main
         # Note: We don't sort explicitly in python. The filter implementation
         # of the DB already sorts by ID if no sort option was given.
 
@@ -974,7 +997,11 @@ class RestfulInstance(object):
         for item_id in obj_list:
             r = {}
             if self.db.security.hasPermission(
+<<<<<<< HEAD
                 'View', uid, class_name, itemid=item_id, property='id',
+=======
+                'View', uid, class_name, itemid=item_id, property='id'
+>>>>>>> main
             ):
                 r = {'id': item_id, 'link': class_path + item_id}
             if display_props:
@@ -986,6 +1013,7 @@ class RestfulInstance(object):
 
         result_len = len(result['collection'])
 
+<<<<<<< HEAD
         if not overflow:  # noqa: SIM108  - no nested ternary
             # add back the number of items in the offset.
             total_len = kw['offset'] + result_len if 'offset' in kw \
@@ -1002,14 +1030,21 @@ class RestfulInstance(object):
         if page['size'] is not None and page['size'] > 0:
             result['collection'] = result['collection'][:page['size']]
 
+=======
+>>>>>>> main
         # pagination - page_index from 1...N
         if page['size'] is not None and page['size'] > 0:
             result['@links'] = {}
             for rel in ('next', 'prev', 'self'):
                 if rel == 'next':
                     # if current index includes all data, continue
+<<<<<<< HEAD
                     if page['size'] >= result_len: continue  # noqa: E701
                     index = page['index'] + 1
+=======
+                    if page['size'] > result_len: continue  # noqa: E701
+                    index = page['index']+1
+>>>>>>> main
                 if rel == 'prev':
                     if page['index'] <= 1: continue  # noqa: E701
                     index = page['index'] - 1
@@ -1024,8 +1059,13 @@ class RestfulInstance(object):
                                      for field in input.value
                                      if field.name != "@page_index"])})
 
+<<<<<<< HEAD
         result['@total_size'] = total_len
         self.client.setHeader("X-Count-Total", str(total_len))
+=======
+        result['@total_size'] = result_len
+        self.client.setHeader("X-Count-Total", str(result_len))
+>>>>>>> main
         self.client.setHeader("Allow", "OPTIONS, GET, POST")
         return 200, result
 

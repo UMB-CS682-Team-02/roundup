@@ -42,11 +42,14 @@ class BasicDatabase(SessionCommon):
             os.remove(path)
         elif os.path.exists(path+'.db'):    # dbm appends .db
             os.remove(path+'.db')
+<<<<<<< HEAD
         elif os.path.exists(path+".dir"):  # dumb dbm
             os.remove(path+".dir")
             os.remove(path+".dat")
 
         #self._db_type = None
+=======
+>>>>>>> main
 
     def cache_db_type(self, path):
         ''' determine which DB wrote the class file, and cache it as an
@@ -147,9 +150,13 @@ class BasicDatabase(SessionCommon):
 
         # new database? let anydbm pick the best dbm
         if not db_type:
+<<<<<<< HEAD
             db = anydbm.open(path, 'c')
             #self.cache_db_type(path)
             return db
+=======
+            return anydbm.open(path, 'c')
+>>>>>>> main
 
         # open the database with the correct module
         dbm = __import__(db_type)

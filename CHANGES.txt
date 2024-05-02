@@ -16,12 +16,15 @@ python 3.6 or newer (3.4/3.5 might work, but they are not tested).
 
 Fixed:
 
+<<<<<<< HEAD
 - issue2551282 - MySQL utf8mb4 issues and
   issue2551115 - Use utf8mb4 as a default for MySQL instead of utf8
   The default database type and collations have been set to:
   utf8mb4, utf8mb4_unicode_ci and utf8mb4_0900_bin. They are (sadly)
   configurable from config.ini. Require directions on upgrading the
   MySQL db have been documented in upgrading.txt.
+=======
+>>>>>>> main
 - issue2551063 - Rest/Xmlrpc interfaces needs failed login protection.
   Failed API login rate limiting with expiring lockout added. (John
   Rouillard)
@@ -111,6 +114,7 @@ Fixed:
   which clobbers the info about the template issue. As a stop-gap set
   the line number to -1 so the original traceback can be seen. This
   could be a bug in ZopeTAL. (John Rouillard)
+<<<<<<< HEAD
 - issue2551328 - REST results show next link if number of results is a
   multiple of page size. There should be no next link. (Found by Patel
   Malav and Bharath Kanama of the UMass-Boston CS682 Spring 2024
@@ -126,6 +130,8 @@ Fixed:
   using dumbdbm. (John Rouillard)
 - Use of '-' directory in static_files config option under windows
   Python fixed.
+=======
+>>>>>>> main
 
 Features:
 
@@ -155,8 +161,12 @@ Features:
   weekly-report,schema-dump.py, roundup-reminder, copy-user.py,
   dump_dbm_sessions_db.py, contributors.py (John Rouillard)
 - roundup/msgfile.py can now be called as 'python msgfmt.py de.po de.mo'
+<<<<<<< HEAD
   or 'python msgfmt.py -o de.mo de.po' to compile a translation file if
   GNU msgfmt is missing. (John Rouillard)
+=======
+  to compile a translation file if msgfmt is missing. (John Rouillard)
+>>>>>>> main
 - save roundup-admin history between sessions. Load
   ~/.roundup_admin_rlrc file to set history-size persistently. Add
   pragma history_length to override for a session. (John Rouillard)
@@ -175,8 +185,11 @@ Features:
   jinja function. expandfile allows setting a dictionary and tokens in
   the file of the form "%(token_name)s" will be replaced in the file
   with the values from the dict. (John Rouillard)
+<<<<<<< HEAD
 - add @group to rest interface collection queries. Useful when using
   optgroup in select elements. (John Rouillard)
+=======
+>>>>>>> main
 
 2023-07-13 2.3.0
 

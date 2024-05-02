@@ -1835,7 +1835,11 @@ class StringHTMLProperty(HTMLProperty):
             s = self.hyper_re.sub(self._hyper_repl, s)
         return s
 
+<<<<<<< HEAD
     def wrapped(self, escape=1, hyperlink=1, columns=80):
+=======
+    def wrapped(self, escape=1, hyperlink=1):
+>>>>>>> main
         """Render a "wrapped" representation of the property.
 
         We wrap long lines at 80 columns on the nearest whitespace. Lines
@@ -1847,16 +1851,23 @@ class StringHTMLProperty(HTMLProperty):
         - "escape" turns on/off HTML quoting
         - "hyperlink" turns on/off in-text hyperlinking of URLs, email
           addresses and designators
+<<<<<<< HEAD
         - "columns" sets the column where the wrapping will occur.
           Default of 80.
+=======
+>>>>>>> main
         """
         if not self.is_view_ok():
             return self._('[hidden]')
 
         if self._value is None:
             return ''
+<<<<<<< HEAD
         s = '\n'.join(textwrap.wrap(str(self._value), columns,
                                     break_long_words=False))
+=======
+        s = '\n'.join(textwrap.wrap(str(self._value), 80))
+>>>>>>> main
         if escape:
             s = html_escape(s)
         if hyperlink:
@@ -2143,7 +2154,11 @@ class BooleanHTMLProperty(HTMLProperty):
             If not editable, just display the value via plain().
 
             In addition to being able to set arbitrary html properties
+<<<<<<< HEAD
             using prop=val arguments, the three arguments:
+=======
+            using prop=val arguments, the thre arguments:
+>>>>>>> main
 
               y_label, n_label, u_label let you control the labels
               associated with the yes, no (and optionally unknown/empty)
@@ -3291,7 +3306,11 @@ env: %(env)s
 
             This routine generates an html form with hidden elements.
             If you want to have visible form elements in your tal/jinja
+<<<<<<< HEAD
             generated templates use the exclude array to list the names for
+=======
+            generated templates use the exclude aray to list the names for
+>>>>>>> main
             these elements. This wll prevent the function from creating
             these elements in its output.
         """

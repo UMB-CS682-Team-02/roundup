@@ -85,6 +85,7 @@ class Iterator:
         return s
 
     def roman(self, lower=lambda x:x.lower):
+<<<<<<< HEAD
         return self.Roman().lower()
 
     def first(self, name=None):
@@ -121,6 +122,19 @@ class Iterator:
            triggers a new group?
         """
 
+=======
+        return lower(self.Roman())
+
+    def first(self, name=None):
+        if self.start: return 1
+        return not self.same_part(name, self._last, self.item)
+
+    def last(self, name=None):
+        if self.end: return 1
+        return not self.same_part(name, self.item, self._next)
+
+    def same_part(self, name, ob1, ob2):
+>>>>>>> main
         if name is None:
             return ob1 == ob2
         no = []

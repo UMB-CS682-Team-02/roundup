@@ -47,7 +47,10 @@ from roundup.configuration import (
 )
 from roundup.exceptions import UsageError
 from roundup.i18n import _, get_translation
+<<<<<<< HEAD
 from roundup import support
+=======
+>>>>>>> main
 
 try:
     from UserDict import UserDict
@@ -297,7 +300,10 @@ quotes. Examples:
            address="1 2 3"  (1 token: address=1 2 3)
            \\\\               (1 token: \\)
            \\n\\r\\t           (1 token: a newline, carriage-return and tab)
+<<<<<<< HEAD
            f "test\\"q"      (2 tokens: f test"q)
+=======
+>>>>>>> main
 
 When multiple nodes are specified to the roundup get or roundup set
 commands, the specified properties are retrieved or set on all the listed
@@ -630,7 +636,11 @@ Command help:
                                  classname)
 
             with open(os.path.join(export_dir, classname + '.csv'), 'w') as f:
+<<<<<<< HEAD
                 writer = csv.writer(f, colon_separated, lineterminator='\n')
+=======
+                writer = csv.writer(f, colon_separated)
+>>>>>>> main
 
                 propnames = cl.export_propnames()
                 fields = propnames[:]
@@ -655,10 +665,16 @@ Command help:
                     all_nodes.sort(key=keysort)
                 # if there is no classkey no need to sort
 
+<<<<<<< HEAD
                 for nodeid in support.Progress( "Exporting %s" %
                                                 classname, all_nodes):
                     if self.verbose:
                         sys.stdout.write('\rExporting %s - %s ' %
+=======
+                for nodeid in all_nodes:
+                    if self.verbose:
+                        sys.stdout.write('\rExporting %s - %s' %
+>>>>>>> main
                                          (classname, nodeid))
                         sys.stdout.flush()
                     node = cl.getnode(nodeid)
@@ -685,9 +701,14 @@ Command help:
                     sys.stdout.write("\nExporting Journal for %s\n" %
                                      classname)
                     sys.stdout.flush()
+<<<<<<< HEAD
                 journals = csv.writer(jf, colon_separated, lineterminator='\n')
                 for row in support.Progress("   Writing journals",
                                             cl.export_journals()):
+=======
+                journals = csv.writer(jf, colon_separated)
+                for row in cl.export_journals():
+>>>>>>> main
                     journals.writerow(row)
         if max_len > self.db.config.CSV_FIELD_SIZE:
             print("Warning: config csv_field_size should be at least %s" %
@@ -865,6 +886,7 @@ Command help:
             if default_ppdr > config.PASSWORD_PBKDF2_DEFAULT_ROUNDS:
                 print(_("Update "
                         "'password_pbkdf2_default_rounds' "
+<<<<<<< HEAD
                         "to a number equal to or larger\n  than %s.\n") %
                       default_ppdr)
 
@@ -873,6 +895,10 @@ Command help:
                 print(_("Check the rdbms mysql_* settings. Your charset and "
                         "collations may need\n"
                         "  to be changed. See upgrading instructions.\n"))
+=======
+                        "to a number equal to or larger\nthan %s.") %
+                      default_ppdr)
+>>>>>>> main
         else:
             # generate default config
             config = CoreConfig()
@@ -1236,7 +1262,11 @@ Command help:
 
             # ensure that the properties and the CSV file headings match
             with open(os.path.join(import_dir, file), 'r') as f:
+<<<<<<< HEAD
                 reader = csv.reader(f, colon_separated, lineterminator='\n')
+=======
+                reader = csv.reader(f, colon_separated)
+>>>>>>> main
                 file_props = None
                 maxid = 1
                 # loop through the file and create a node for each entry
@@ -1260,7 +1290,11 @@ Command help:
 
             # import the journals
             with open(os.path.join(import_dir, classname + '-journals.csv'), 'r') as f:
+<<<<<<< HEAD
                 reader = csv.reader(f, colon_separated, lineterminator='\n')
+=======
+                reader = csv.reader(f, colon_separated)
+>>>>>>> main
                 cl.import_journals(reader)
 
             # (print to sys.stdout here to allow tests to squash it .. ugh)
@@ -1771,6 +1805,10 @@ Erase it? Y/N: """) % locals())
         to reindex issue class items 23-1000. Missing items
         are reported but do not stop indexing of the range.
         """
+<<<<<<< HEAD
+=======
+        from roundup import support
+>>>>>>> main
         if args:
             for arg in args:
                 m = desre.match(arg)

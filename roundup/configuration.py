@@ -405,8 +405,13 @@ class EmailBodyOption(Option):
 class IsolationOption(Option):
     """Database isolation levels"""
 
+<<<<<<< HEAD
     allowed = ('read uncommitted', 'read committed', 'repeatable read',
                'serializable')
+=======
+    allowed = ['read uncommitted', 'read committed', 'repeatable read',
+               'serializable']
+>>>>>>> main
     class_description = "Allowed values: %s" % ', '.join("'%s'" % a
                                                          for a in allowed)
 
@@ -420,7 +425,11 @@ class IsolationOption(Option):
 class IndexerOption(Option):
     """Valid options for indexer"""
 
+<<<<<<< HEAD
     allowed = ('', 'xapian', 'whoosh', 'native', 'native-fts')
+=======
+    allowed = ['', 'xapian', 'whoosh', 'native', 'native-fts']
+>>>>>>> main
     class_description = "Allowed values: %s" % ', '.join("'%s'" % a
                                                          for a in allowed)
 
@@ -428,7 +437,11 @@ class IndexerOption(Option):
     #    SELECT cfgname FROM pg_ts_config;
     # on a postgresql 14.1 server.
     # So the best we can do is hardcode this.
+<<<<<<< HEAD
     valid_langs = ("simple",
+=======
+    valid_langs = ["simple",
+>>>>>>> main
                    "custom1",
                    "custom2",
                    "custom3",
@@ -461,7 +474,11 @@ class IndexerOption(Option):
                    "swedish",
                    "tamil",
                    "turkish",
+<<<<<<< HEAD
                    "yiddish")
+=======
+                   "yiddish"]
+>>>>>>> main
 
     def str2value(self, value):
         _val = value.lower()
@@ -817,7 +834,10 @@ class SecretNullableOption(NullableOption, SecretOption):
     get = SecretOption.get
     class_description = SecretOption.class_description
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 class ListSecretOption(SecretOption):
     # use get from SecretOption
     def get(self):
@@ -829,7 +849,11 @@ class ListSecretOption(SecretOption):
     def validate(self, options):  # noqa: ARG002  --  options unused
         if self.name == "WEB_JWT_SECRET":
             secrets = self.get()
+<<<<<<< HEAD
             invalid_secrets = [x for x in secrets[1:] if len(x) < 32]
+=======
+            invalid_secrets = [ x for x in secrets[1:] if len(x) < 32]
+>>>>>>> main
             if invalid_secrets:
                 raise OptionValueError(
                     self, ", ".join(secrets),
@@ -838,7 +862,10 @@ class ListSecretOption(SecretOption):
         else:
             self.get()
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 class RedisUrlOption(SecretNullableOption):
     """Do required check to make sure known bad parameters are not
        put in the url.
@@ -863,7 +890,11 @@ class SessiondbBackendOption(Option):
        Fail with error and suggestions if they are incompatible.
     """
 
+<<<<<<< HEAD
     compatibility_matrix = (
+=======
+    compatibility_matrix = [
+>>>>>>> main
         ('anydbm', 'anydbm'),
         ('anydbm', 'redis'),
         ('sqlite', 'anydbm'),
@@ -871,7 +902,11 @@ class SessiondbBackendOption(Option):
         ('sqlite', 'redis'),
         ('mysql', 'mysql'),
         ('postgresql', 'postgresql'),
+<<<<<<< HEAD
         )
+=======
+        ]
+>>>>>>> main
 
     def validate(self, options):
         ''' make sure session db is compatible with primary db.
@@ -986,12 +1021,21 @@ class RegExpOption(Option):
                 value = value.decode("utf-8")
         return re.compile(value, self.flags)
 
+<<<<<<< HEAD
 
 class LogLevelOption(Option):
     """A log level, one of none, debug, info, warning, error, critical"""
 
     values = "none debug info warning error critical".split()
     class_description = "Allowed values: %s" % (', '.join(values))
+=======
+class LogLevelOption(Option):
+
+    """A log level, one of none, debug, info, warning, error, critical"""
+
+    values = "none debug info warning error critical".split ()
+    class_description = "Allowed values: %s" % (', '.join (values))
+>>>>>>> main
 
     def str2value(self, value):
         _val = value.lower()
@@ -1000,7 +1044,10 @@ class LogLevelOption(Option):
         else:
             raise OptionValueError(self, value, self.class_description)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 try:
     import jinja2  # noqa: F401
     jinja2_avail = "Available found"
@@ -1495,6 +1542,7 @@ always passes, so setting it less than 1 is not recommended."""),
             "Name of the group to use in the MySQL defaults file (.my.cnf).\n"
             "Only used in MySQL connections."),
         (Option, 'mysql_charset', 'utf8mb4',
+<<<<<<< HEAD
             "Charset to use for mysql connection and databases.\n"
             "If set to 'default', no charset option is used when\n"
             "creating the db connection and utf8mb4 is used for the\n"
@@ -1512,6 +1560,13 @@ always passes, so setting it less than 1 is not recommended."""),
             "to match the depricated 'utf8mb3_bin' collation. This must\n"
             "be compatible with the mysql_collation above. Only used\n"
             "by MySQL."),
+=======
+            "Charset to use for mysql connection,\n"
+            "use 'default' for the mysql default, no charset option\n"
+            "is used when creating the connection in that case.\n"
+            "Otherwise any permissible mysql charset is allowed here.\n"
+            "Only used in MySQL connections."),
+>>>>>>> main
         (IntegerNumberGeqZeroOption, 'sqlite_timeout', '30',
             "Number of seconds to wait when the SQLite database is locked\n"
             "Default: use a 30 second timeout (extraordinarily generous)\n"

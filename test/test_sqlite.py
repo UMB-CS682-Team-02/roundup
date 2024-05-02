@@ -229,10 +229,14 @@ class anydbmSessionTest(sqliteOpener, SessionTest, unittest.TestCase):
     def setUp(self):
         SessionTest.setUp(self)
 
+<<<<<<< HEAD
         # redefine the session db's as anydbm
         # close the existing session databases before opening new ones.
         self.db.Session.close()
         self.db.Otk.close()
+=======
+        # redefine the session db's as redis.
+>>>>>>> main
         self.db.config.SESSIONDB_BACKEND = "anydbm"
         self.db.Session = None
         self.db.Otk = None

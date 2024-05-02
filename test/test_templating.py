@@ -4,7 +4,10 @@ import time
 
 from roundup.anypy.cgi_ import FieldStorage, MiniFieldStorage
 from roundup.cgi.templating import *
+<<<<<<< HEAD
 from roundup.cgi.ZTUtils.Iterator import Iterator
+=======
+>>>>>>> main
 from .test_actions import MockNull, true
 from .html_norm import NormalizingHtmlParser
 
@@ -451,9 +454,13 @@ class HTMLClassTestCase(TemplatingTestCase) :
                        ' Put in <html> to be escaped. Put in a'
                        ' https://example.com/link as well. Let us see if'
                        ' it will wrap properly.' )
+<<<<<<< HEAD
 
         test_result_wrap = {}
         test_result_wrap[80] = ('A long string that needs to be wrapped to 80'
+=======
+        test_result = ('A long string that needs to be wrapped to 80'
+>>>>>>> main
                        ' characters and no more. Put in a\n'
                        'link <a href="issue1">issue1</a>. Put in'
                        ' &lt;html&gt; to be escaped. Put in a <a'
@@ -461,6 +468,7 @@ class HTMLClassTestCase(TemplatingTestCase) :
                        ' rel="nofollow noopener">'
                        'https://example.com/link</a> as\n'
                        'well. Let us see if it will wrap properly.')
+<<<<<<< HEAD
         test_result_wrap[20] = (
             'A long string that\n'
             'needs to be wrapped\n'
@@ -485,6 +493,12 @@ class HTMLClassTestCase(TemplatingTestCase) :
             wrapped = p.wrapped(columns=i)
             print(wrapped)
             self.assertEqual(wrapped, test_result_wrap[i])
+=======
+
+        p = StringHTMLProperty(self.client, 'test', '1', None, 'test',
+                               test_string)
+        self.assertEqual(p.wrapped(), test_result)
+>>>>>>> main
 
     def test_string_plain_or_hyperlinked(self):
         ''' test that email obscures the email '''
@@ -1120,6 +1134,7 @@ class NoStextTestCase(TemplatingTestCase) :
         self.assertEqual(p.stext(), u2s(u'A string with <a href="mailto:cmeerw@example.com">cmeerw@example.com</a> *embedded* \u00df'))
 
 
+<<<<<<< HEAD
 class ZUtilsTestcase(TemplatingTestCase):
 
     def test_Iterator(self):
@@ -1253,6 +1268,8 @@ class ZUtilsTestcase(TemplatingTestCase):
             # use no attribute name
             self.assertIs(i.same_part(None, item2, item3), False)
 
+=======
+>>>>>>> main
 r'''
 class HTMLPermissions:
     def is_edit_ok(self):

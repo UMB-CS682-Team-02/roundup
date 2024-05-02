@@ -53,7 +53,11 @@ from hashlib import md5
 
 def db_exists(config):
     # check for the user db
+<<<<<<< HEAD
     for db in 'nodes.user nodes.user.db nodes.user.dat'.split():
+=======
+    for db in 'nodes.user nodes.user.db'.split():
+>>>>>>> main
         if os.path.exists(os.path.join(config.DATABASE, db)):
             return 1
     return 0

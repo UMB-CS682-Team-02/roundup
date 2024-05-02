@@ -139,7 +139,10 @@ class WsgiSetup(LiveServerTestCase):
             return RequestDispatcher(self.dirname)
 
 
+<<<<<<< HEAD
 @skip_requests
+=======
+>>>>>>> main
 class BaseTestCases(WsgiSetup):
     """Class with all tests to run against wsgi server. Is reused when
        wsgi server is started with various feature flags
@@ -1218,7 +1221,10 @@ class BaseTestCases(WsgiSetup):
         f = requests.get(self.url_base() + "?@search_text=RESULT")
         self.assertIn("foo bar", f.text)
 
+<<<<<<< HEAD
 @skip_requests
+=======
+>>>>>>> main
 class TestFeatureFlagCacheTrackerOff(BaseTestCases, WsgiSetup):
     """Class to run all test in BaseTestCases with the cache_tracker
        feature flag disabled when starting the wsgi server
@@ -1234,7 +1240,10 @@ class TestFeatureFlagCacheTrackerOff(BaseTestCases, WsgiSetup):
             return RequestDispatcher(self.dirname, feature_flags=ff)
 
 @skip_postgresql
+<<<<<<< HEAD
 @skip_requests
+=======
+>>>>>>> main
 class TestPostgresWsgiServer(BaseTestCases, WsgiSetup):
     """Class to run all test in BaseTestCases with the cache_tracker
        feature enabled when starting the wsgi server
@@ -1322,7 +1331,10 @@ class TestPostgresWsgiServer(BaseTestCases, WsgiSetup):
         f = requests.get(self.url_base() + "?@search_text=ts:RESULT")
         self.assertIn("foo bar RESULT", f.text)
 
+<<<<<<< HEAD
 @skip_requests
+=======
+>>>>>>> main
 class TestApiRateLogin(WsgiSetup):
     """Class to run test in BaseTestCases with the cache_tracker
        feature flag enabled when starting the wsgi server

@@ -7,7 +7,10 @@ from time import sleep
 from datetime import datetime, timedelta
 from roundup.anypy.cgi_ import cgi
 from roundup.anypy.datetime_ import utcnow
+<<<<<<< HEAD
 from roundup.exceptions import UsageError
+=======
+>>>>>>> main
 from roundup.test.tx_Source_detector import init as tx_Source_init
 
 
@@ -316,7 +319,11 @@ class TestCase():
         except ValueError:
             pass
 
+<<<<<<< HEAD
     def create_sampledata(self, data_max=3):
+=======
+    def create_sampledata(self):
+>>>>>>> main
         """ Create sample data common to some test cases
         """
         self.create_stati()
@@ -338,6 +345,7 @@ class TestCase():
             priority=self.db.priority.lookup('critical')
         )
 
+<<<<<<< HEAD
         if data_max > 10:
             raise ValueError('data_max must be less than 10')
 
@@ -567,6 +575,8 @@ class TestCase():
         # reset environment just in case I forgot a reset above.
         RestfulInstance.max_response_row_size = self.stored_max
 
+=======
+>>>>>>> main
     def testGet(self):
         """
         Retrieve all three users
@@ -999,6 +1009,7 @@ class TestCase():
         results = self.server.get_collection('issue', form)
         self.assertDictEqual(expected, results)
 
+<<<<<<< HEAD
     def testGrouping(self):
         self.maxDiff = 4000
         self.create_sampledata(data_max=5)
@@ -1040,6 +1051,8 @@ class TestCase():
         print(results)
         self.assertDictEqual(expected, results)
 
+=======
+>>>>>>> main
     def testTransitiveField(self):
         """ Test a transitive property in @fields """
         base_path = self.db.config['TRACKER_WEB'] + 'rest/data/'

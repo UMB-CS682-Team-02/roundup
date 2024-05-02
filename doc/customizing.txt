@@ -737,11 +737,14 @@ C. Add the timelog listing from step 5. to the ``msg.item.html`` template
     
     <table class="messages">
 
+<<<<<<< HEAD
 The wiki includes an `auditor that extracts specially formatted timelog
 entries from emails`_ sent to the tracker.
 
 .. _auditor that extracts specially formatted timelog
    entries from emails: https://wiki.roundup-tracker.org/TimelogAuditor
+=======
+>>>>>>> main
 
 Tracking different types of issues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2176,8 +2179,11 @@ string in the nosy reaction function.
 Changing How the Core Code Works
 --------------------------------
 
+<<<<<<< HEAD
 .. index:: single: interfaces.py; cache-control headers
 
+=======
+>>>>>>> main
 Changing Cache-Control Headers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -2204,7 +2210,10 @@ path in the tracker's `config.ini`. In the example above:
 
 Note that a file name match overrides the mime type settings.
 
+<<<<<<< HEAD
 .. index:: single: interfaces.py; password complexity checking
+=======
+>>>>>>> main
 
 Implement Password Complexity Checking
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2244,8 +2253,11 @@ it replaces the setPassword method in the Password class. The new
 version validates that the password is sufficiently complex. Then it
 passes off the setting of password to the original method.
 
+<<<<<<< HEAD
 .. index:: single: interfaces.py; interpreting time interval values
 
+=======
+>>>>>>> main
 Enhance Time Intervals Forms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

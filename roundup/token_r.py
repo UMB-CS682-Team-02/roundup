@@ -96,12 +96,15 @@ def token_split(s, whitespace=' \r\n\t', quotes='\'"',
                 oldstate = state
                 state = ESCAPE
                 continue
+<<<<<<< HEAD
         elif state == QUOTE and c == '\\':
             # in a quoted token and found an escape sequence
             pos = pos + 1
             oldstate = state
             state = ESCAPE
             continue
+=======
+>>>>>>> main
         elif state == QUOTE and c == quotechar:
             # in a quoted token and found a matching quote char
             pos = pos + 1

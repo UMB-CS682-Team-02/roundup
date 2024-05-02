@@ -15,6 +15,7 @@
 # BASIS, AND THERE IS NO OBLIGATION WHATSOEVER TO PROVIDE MAINTENANCE,
 # SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
+<<<<<<< HEAD
 import errno
 import fileinput
 import logging
@@ -47,6 +48,16 @@ else:
         skip_postgresql = mark_class(pytest.mark.skip(
             reason='Skipping PostgreSQL tests: database not available'))
 
+=======
+import unittest
+import logging
+import fileinput
+
+import os, shutil, errno, sys
+
+import pytest
+from roundup import configuration
+>>>>>>> main
 
 try:
     import xapian
@@ -826,7 +837,11 @@ class TrackerConfig(unittest.TestCase):
         self.assertIn("basque", cm.exception.args[2])
 
     @skip_redis
+<<<<<<< HEAD
     def testLoadSessionDbRedisCompatible(self):
+=======
+    def testLoadSessionDbRedis(self):
+>>>>>>> main
         """ run load to validate config """
 
         config = configuration.CoreConfig()
@@ -843,10 +858,13 @@ class TrackerConfig(unittest.TestCase):
 
         config.validator(config.options)
 
+<<<<<<< HEAD
     @skip_redis
     @skip_postgresql
     def testLoadSessionDbRedisIncompatible(self):
         """ run load to validate config """
+=======
+>>>>>>> main
         # incompatible pair
         config.RDBMS_BACKEND = "postgresql"
         config.SESSIONDB_BACKEND = "redis"

@@ -259,8 +259,11 @@ to compress responses on the fly. The python standard library includes
 gzip support. For brotli or zstd you will need to install packages. See
 the `installation documentation`_ for details.
 
+<<<<<<< HEAD
 .. index:: single: interfaces.py; configuring http compression
 
+=======
+>>>>>>> main
 Some assets will not be compressed on the fly. Assets with mime types
 of "image/png" or "image/jpeg" will not be compressed. You
 can add mime types to the list by using ``interfaces.py`` as discussed
@@ -322,6 +325,7 @@ get the gzip version and not a brotli compressed version. This
 mechanism allows the admin to allow use of brotli and zstd for
 dynamic content, but not for static content.
 
+<<<<<<< HEAD
 .. index:: single: interfaces.py; setting REST maximum result limit
 
 Configuring REST Maximum Result Limit
@@ -347,6 +351,8 @@ default value. However, this option is available for cases when a
 request requires more than 10 million rows and pagination using
 ``@page_index`` and ``@page_size=9999999`` is not possible.
 
+=======
+>>>>>>> main
 Adding a Web Content Security Policy (CSP)
 ==========================================
 
@@ -717,7 +723,11 @@ sqlite databases for storing the session and otk data.
 The following table shows which primary databases support
 different session database backends:
 
+<<<<<<< HEAD
 .. table:: D - default if unconfigured, + - compatible choice
+=======
+.. table:: D - default if unconfigured, X - compatible choice
+>>>>>>> main
   :class: captionbelow
 
   +---------------+--------+--------+-------+-------+------------+
@@ -725,9 +735,15 @@ different session database backends:
   +---------------+--------+--------+-------+-------+------------+
   |primary db     | anydbm | sqlite | redis | mysql | postgresql |
   +===============+========+========+=======+=======+============+
+<<<<<<< HEAD
   |anydbm         |    D   |        |   +   |       |            |
   +---------------+--------+--------+-------+-------+------------+
   |sqlite         |    +   |    D   |   +   |       |            |
+=======
+  |anydbm         |    D   |        |   X   |       |            |
+  +---------------+--------+--------+-------+-------+------------+
+  |sqlite         |    X   |    D   |   X   |       |            |
+>>>>>>> main
   +---------------+--------+--------+-------+-------+------------+
   |mysql          |        |        |       |   D   |            |
   +---------------+--------+--------+-------+-------+------------+

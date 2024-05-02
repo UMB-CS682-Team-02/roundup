@@ -251,14 +251,20 @@ jinja2
   its TEMPLATE-INFO.txt file) you need
   to have the jinja2_ template engine installed.
 
+<<<<<<< HEAD
 .. _install/docutils:
 
+=======
+>>>>>>> main
 docutils
   To use ReStructuredText rendering you need to have the `docutils`_
   package installed.
 
+<<<<<<< HEAD
 .. _install/markdown:
 
+=======
+>>>>>>> main
 markdown, markdown2 or mistune
   To use markdown rendering you need to have the markdown_,
   markdown2_ (2.4.9 known to be broken, 2.3.3 known to work),
@@ -2124,6 +2130,7 @@ addresses, databases to back up, etc.
 Platform-Specific Notes
 =======================
 
+<<<<<<< HEAD
 
 Windows
 -------
@@ -2146,6 +2153,12 @@ database server.
 
 Windows command-line tools
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+=======
+.. index:: windows; add Roundup to path
+
+Windows command-line tools
+--------------------------
+>>>>>>> main
 
 To make the command-line tools accessible in Windows, you need to update
 the "Path" environment variable in the Registry via a dialog box.
@@ -2169,7 +2182,11 @@ Panel" is directly accessible from "Start".
 I do not believe this is possible to do in previous versions of Windows.
 
 Use pip to install pyreadline3 for roundup-admin line editing
+<<<<<<< HEAD
 
+=======
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>>>>>>> main
 
 If you install pyreadline3_ using pip, roundup-admin will support
 command line editing and history.
@@ -2181,7 +2198,11 @@ This will remove the dreaded::
 warning when starting roundup-admin.
 
 Windows Server
+<<<<<<< HEAD
 ~~~~~~~~~~~~~~
+=======
+--------------
+>>>>>>> main
 
 To have the Roundup web server start up when your machine boots up, there
 are two different methods, the scheduler and installing the service.
@@ -2191,7 +2212,11 @@ are two different methods, the scheduler and installing the service.
 .. _Using the Windows scheduler:
 
 1. Using the Windows scheduler
+<<<<<<< HEAD
 ''''''''''''''''''''''''''''''
+=======
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>>>>>>> main
 
 Set up the following in Scheduled Tasks (note, the following is for a
 cygwin setup):
@@ -2223,7 +2248,11 @@ Schedule
 .. index:: windows; setup Roundup a service
 
 2. Installing the roundup server as a Windows service
+<<<<<<< HEAD
 '''''''''''''''''''''''''''''''''''''''''''''''''''''
+=======
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>>>>>>> main
 
 This is more Windows oriented and will make the Roundup server run as
 soon as the PC starts up without any need for a login or such. It will
@@ -2264,6 +2293,7 @@ If you are using Apache as the webserver you might want to use it with
 mod_python instead to serve out Roundup. In that case see the mod_python
 instructions above for details.
 
+<<<<<<< HEAD
 Linux
 -----
 
@@ -2271,6 +2301,10 @@ Make sure you read the instructions under `UNIX environment steps`_.
 
 Sendmail smrsh
 ~~~~~~~~~~~~~~
+=======
+Sendmail smrsh
+--------------
+>>>>>>> main
 
 If you use Sendmail's ``smrsh`` mechanism, you will need to tell
 smrsh that roundup-mailgw is a valid/trusted mail handler
@@ -2285,6 +2319,14 @@ This is usually done via the following 2 steps:
 2. change your alias to ``"|roundup-mailgw <tracker_home>"``
 
 
+<<<<<<< HEAD
+=======
+Linux
+-----
+
+Make sure you read the instructions under `UNIX environment steps`_.
+
+>>>>>>> main
 
 Solaris
 -------
@@ -2339,8 +2381,11 @@ the test.
 .. _`preventing spam`: customizing.html#preventing-spam
 .. _`Adding a new field to the classic schema`:
    customizing.html#adding-a-new-field-to-the-classic-schema
+<<<<<<< HEAD
 .. _`some other backend for your session database`:
    admin_guide.html#configuring-session-databases
+=======
+>>>>>>> main
 .. _`Tracking different types of issues`:
    customizing.html#tracking-different-types-of-issues
 .. _`customising roundup`: customizing.html

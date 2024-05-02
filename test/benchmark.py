@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """ Usage: python benchmark.py ["database backend list" | backend1] [backend2]
 
 Import the backend (anydbm, sqlite by default) and run some performance
@@ -33,16 +34,24 @@ if (osp.exists(thisdir + '/benchmark.py') and
         osp.exists(rootdir + '/roundup/__init__.py')):
     # the script is located inside roundup source code
     sys.path.insert(0, rootdir)
+=======
+from __future__ import print_function
+import sys, os, time
+>>>>>>> main
 
 from roundup.hyperdb import String, Password, Link, Multilink, Date, \
     Interval, DatabaseError, Boolean, Number
 from roundup import date, password
 
+<<<<<<< HEAD
 from test.db_test_base import config
 
 # global for the default signal hander so
 # my signal handler can reset before it raises signal.
 int_sig_default_handler = None
+=======
+from .db_test_base import config
+>>>>>>> main
 
 def setupSchema(db, module):
     status = module.Class(db, "status", name=String())
@@ -60,6 +69,7 @@ def setupSchema(db, module):
     db.post_init()
     db.commit()
 
+<<<<<<< HEAD
 def rm_db_on_signal(sig, frame):
     print("removing incomplete database %s due to interruption." %
           config.DATABASE)
@@ -78,12 +88,19 @@ def main(backendname, time=time.time, numissues=10):
                                           backendname)
     except ImportError:
         print("Unable to import %s backend." % backendname)
+=======
+def main(backendname, time=time.time, numissues=10):
+    try:
+        exec('from roundup.backends import %s as backend'%backendname)
+    except ImportError:
+>>>>>>> main
         return
 
     times = []
 
     config.DATABASE = os.path.join('_benchmark', '%s-%s'%(backendname,
         numissues))
+<<<<<<< HEAD
 
     config.RDBMS_NAME = "rounduptest_%s" % numissues
 
@@ -98,13 +115,24 @@ def main(backendname, time=time.time, numissues=10):
 
         # create a whole bunch of stuff
         db.user.create(**{'username': 'admin', 'roles': 'Admin'})
+=======
+    if not os.path.exists(config.DATABASE):
+        db = backend.Database(config, 'admin')
+        setupSchema(db, backend)
+        # create a whole bunch of stuff
+        db.user.create(**{'username': 'admin'})
+>>>>>>> main
         db.status.create(name="unread")
         db.status.create(name="in-progress")
         db.status.create(name="testing")
         db.status.create(name="resolved")
         pc = -1
         for i in range(numissues):
+<<<<<<< HEAD
             db.user.create(**{'username': 'user %s'%i, 'roles': 'User'})
+=======
+            db.user.create(**{'username': 'user %s'%i})
+>>>>>>> main
             for j in range(10):
                 db.user.set(str(i+1), assignable=1)
                 db.user.set(str(i+1), assignable=0)
@@ -113,17 +141,28 @@ def main(backendname, time=time.time, numissues=10):
                 db.issue.set(str(i+1), status='2', assignedto='2', nosy=[])
                 db.issue.set(str(i+1), status='1', assignedto='1',
                     nosy=['1','2'])
+<<<<<<< HEAD
             if (i*100//numissues) != pc and 'INCI' not in os.environ:
+=======
+            if (i*100//numissues) != pc:
+>>>>>>> main
                 pc = (i*100//numissues)
                 sys.stdout.write("%d%%\r"%pc)
                 sys.stdout.flush()
             db.commit()
+<<<<<<< HEAD
         signal.signal(signal.SIGINT, int_sig_default_handler)
+=======
+>>>>>>> main
     else:
         db = backend.Database(config, 'admin')
         setupSchema(db, backend)
 
+<<<<<<< HEAD
     sys.stdout.write('%10s: %-6d'%(backendname[:10], numissues))
+=======
+    sys.stdout.write('%7s: %-6d'%(backendname, numissues))
+>>>>>>> main
     sys.stdout.flush()
 
     times.append(('start', time()))
@@ -180,6 +219,7 @@ def main(backendname, time=time.time, numissues=10):
     sys.stdout.flush()
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     if len(sys.argv) == 2:
         test_databases = sys.argv[1].split()
     elif len(sys.argv) > 2:
@@ -211,4 +251,19 @@ if __name__ == '__main__':
         main(name, numissues=10000)
 
 
+=======
+    #      0         1         2         3         4         5         6
+    #      01234567890123456789012345678901234567890123456789012345678901234
+    print('Test name       fetch  journl jprops lookup filter filtml TOTAL ')
+    for name in 'anydbm metakit sqlite'.split():
+        main(name)
+    for name in 'anydbm metakit sqlite'.split():
+        main(name, numissues=20)
+    for name in 'anydbm metakit sqlite'.split():
+        main(name, numissues=100)
+    # don't even bother benchmarking the dbm backends > 100!
+    for name in 'metakit sqlite'.split():
+        main(name, numissues=1000)
+
+>>>>>>> main
 # vim: set et sts=4 sw=4 :

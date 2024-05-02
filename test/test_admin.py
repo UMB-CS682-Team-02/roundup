@@ -369,11 +369,17 @@ class AdminTest(object):
         self.assertTrue(os.path.isfile(self.dirname + "/config.ini"))
         self.assertTrue(os.path.isfile(self.dirname + "/schema.py"))
 
+<<<<<<< HEAD
         nopath= '/tmp/noSuchDirectory/nodir'
         norealpath = os.path.realpath(nopath + "/..")
         self.admin=AdminTool()
         with captured_output() as (out, err):
             sys.argv=['main', '-i', nopath, 'install', 'classic', self.backend]
+=======
+        self.admin=AdminTool()
+        with captured_output() as (out, err):
+            sys.argv=['main', '-i', '/tmp/noSuchDirectory/nodir', 'install', 'classic', self.backend]
+>>>>>>> main
             ret = self.admin.main()
 
         out = out.getvalue().strip()
@@ -381,7 +387,11 @@ class AdminTest(object):
         print(out)
         self.assertEqual(ret, 1)
         self.assertIn('Error: Instance home parent directory '
+<<<<<<< HEAD
                       '"%s" does not exist' % norealpath, out)
+=======
+                      '"/tmp/noSuchDirectory" does not exist', out)
+>>>>>>> main
 
     def testInitWithConfig_ini(self):
         from roundup.configuration import CoreConfig
@@ -412,8 +422,12 @@ class AdminTest(object):
         self.assertTrue(os.path.isfile(self.dirname + "/config.ini"))
         self.assertTrue(os.path.isfile(self.dirname + "/schema.py"))
         config=CoreConfig(self.dirname)
+<<<<<<< HEAD
         self.assertEqual(config['MAIL_DEBUG'],
                          os.path.normpath(self.dirname + "/SendMail.LOG"))
+=======
+        self.assertEqual(config['MAIL_DEBUG'], self.dirname + "/SendMail.LOG")
+>>>>>>> main
 
     def testList(self):
         ''' Note the tests will fail if you run this under pdb.
@@ -722,7 +736,11 @@ class AdminTest(object):
         out = out.getvalue().strip()
         print(out)
         expected = ("Update 'password_pbkdf2_default_rounds' to a number "
+<<<<<<< HEAD
                     "equal to or larger\n  than 2000000.")
+=======
+                    "equal to or larger\nthan 2000000.")
+>>>>>>> main
 
         self.assertIn(expected, out)
         self.assertTrue(os.path.isfile(self.dirname + "/config2.ini"))

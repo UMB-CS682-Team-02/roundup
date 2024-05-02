@@ -1,9 +1,14 @@
 # misc tests
 
+<<<<<<< HEAD
 import pytest
 import re
 import sys
 import time
+=======
+import re
+import sys
+>>>>>>> main
 import unittest
 
 import roundup.anypy.cmp_
@@ -12,8 +17,11 @@ from roundup.anypy.strings import StringIO  # define StringIO
 from roundup.cgi import cgitb
 from roundup.cgi.accept_language import parse
 
+<<<<<<< HEAD
 from roundup.support import PrioList, Progress, TruthDict
 
+=======
+>>>>>>> main
 
 class AcceptLanguageTest(unittest.TestCase):
     def testParse(self):
@@ -38,11 +46,15 @@ class AcceptLanguageTest(unittest.TestCase):
         self.assertEqual(parse("   "), [])
         self.assertEqual(parse("en,"), ['en'])
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 class CmpTest(unittest.TestCase):
     def testCmp(self):
         roundup.anypy.cmp_._test()
 
+<<<<<<< HEAD
 
 class PrioListTest(unittest.TestCase):
     def testPL(self):
@@ -101,6 +113,8 @@ class TruthDictTest(unittest.TestCase):
         self.assertFalse(td['z'])
 
 
+=======
+>>>>>>> main
 class VersionCheck(unittest.TestCase):
     def test_Version_Check(self):
 

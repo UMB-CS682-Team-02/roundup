@@ -14,8 +14,6 @@ import unittest, os, shutil, errno, sys, difflib, re, io
 import pytest
 import copy
 
-from os.path import normpath
-
 from roundup.anypy.cgi_ import cgi
 from roundup.cgi import client, actions, exceptions
 from roundup.cgi.exceptions import FormError, NotFound, Redirect
@@ -183,8 +181,337 @@ class testCsvExport(object):
         should_be = s2b('"id","title","status","keyword","assignedto","nosy"\r\n'
                         "\"2\",\"bar2\",\"1\",\"['1', '2']\",\"3\",\"['3']\"\r\n")
         self.assertEqual(output.getvalue(), should_be)
+#varshitha code
+class testChartGeneration(object):
+    """Add this class to the argument list for FormTestCase.
 
-class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unittest.TestCase):
+       Otherwise the tests won't be loaded.
+    """
+
+    def createData(self):
+        """Load the database with data to chart."""
+        demo_id=self.db.user.create(username='demo', address='demo@test.test',
+            roles='User', realname='demo')
+        key_id1=self.db.keyword.create(name='keyword1')
+        key_id2=self.db.keyword.create(name='keyword2')
+
+        originalDate = date.Date
+        dummy=date.Date('2000-06-26.00:34:02.0')
+        # is a closure the best way to return a static Date object??
+        def dummyDate(adate=None):
+            def dummyClosure(adate=None, translator=None):
+                return dummy
+            return dummyClosure
+        date.Date = dummyDate()
+
+        self.db.issue.create(title='foo1', priority="1",
+                             status='2', assignedto='4',
+                             nosy=['3',demo_id])
+        self.db.issue.create(title='bar2', priority="3",
+                             status='1', assignedto='3',
+                             keyword=[key_id1,key_id2])
+        self.db.issue.create(title='bar3', priority="2",
+                             status='1', assignedto='3',
+                             keyword=[key_id1,key_id2])
+        self.db.issue.create(title='baz32', status='4')
+
+    def createClient(self, request_dict, classname='issue'):
+        """Create a client with @group and filtering items.
+           Pass in a dict like:
+
+           { "@group"': "-status",
+             "@filter": "status",
+             "status": "2"
+           }
+
+           For these tests the key element is @group to handle sorting order.
+           Optional argument 'classname' allows changing from 'issue' to
+           another class like 'user'.
+        """
+
+        cl = self._make_client(request_dict,
+            nodeid=None, userid='1')
+        cl.classname = classname
+        cl.request = MockNull()
+
+        output = io.BytesIO()
+        cl.request.wfile = output
+        return cl
+
+
+    def testPiechartForwardSortStatus(self):
+        """Test the piechart action.
+
+           Each test consists of creating the data,
+           creating the client
+           verifying the returned data.
+        """
+        self.createData()
+
+        cl = self.createClient(
+            {'@group': 'status', '@columns': 'id,title'}
+            )
+
+        ret = self.instance.cgi_actions['piechart'](cl).handle()
+
+        # basic checks of the returned data
+        # Does it start/end with svg tags?
+        self.assertTrue(ret.startswith(b'<svg '))
+        self.assertTrue(ret.endswith(b'</svg>\n'))
+        # is there a class identifying the plot_title
+        self.assertIn(b'class="title plot_title"', ret)
+
+        # turn the svg xml into a dom
+        # we can then assert things about the structure
+        # of the dom that would be difficult to assert
+        # using regular expressions
+        import lxml.etree as etree
+        ret_dom = etree.fromstring(ret)
+
+        # since the order of sorting is positive by status,
+        # the database's first issue has status 1 which is unread
+        # This should be the first value in the legend.
+        # by inspecting the xml, I found the legend in this case:
+        # Remeber all lists start at 0.
+        # In the 6th element (index 5) under svg
+        #   in the 7th child element (index 6)
+        #      in the first child
+        #         in the first child
+        #           extract the text
+        self.assertEqual('unread',
+            ret_dom[5].getchildren()[6].getchildren()[0].getchildren()[1].text)
+
+        # This is the same test as above, but using a different method
+        # Rather than walking the tree from the top, we find the node
+        # using xpath to search for matching attributes.
+        #
+        # Now just to make things confusing, xpath indexes start
+        # from 1 not 0 as in Python. Also all xpath results are in a
+        # list. Even if it's just a list of one element.
+        #
+        # Inside () python concatenates strings autmoatically
+        # So I have split the xpath query in two strings for
+        #  readbility. They make one long string when run.
+        #
+        # Looking recursively down the tree (//)
+        #    find all nodes with any name (*)
+        #      that has the class attribute ([@class)
+        #      set to legends (="legends"])
+        #   return this as a list by surrounding it with ()'s
+        #   choose the first element ([1])
+        # Looking recursively inside that element (//)
+        #    find a node with the id attribute set to
+        #        activate-serie-0 (*[@id="activate-serie-0"])
+        #        (Because id's ae unique there can be only one.)
+        # Then find all direct child nodes (/*).
+        # This returns a list and we choose the second child (the first
+        #   child is the colored rectangle used to switch graph segments
+        #   on and off) index 1 as we are back in python.
+        # and grab the text from the node.
+        self.assertEqual('unread',
+            ret_dom.xpath('(//*[@class="legends"])[1]'
+                          '//*[@id="activate-serie-0"]/*')[1].text)
+
+
+        # This also works since id's are unique
+        # Also this id is reserved for the first plotted series (serie-0).
+        self.assertEqual('unread',
+             ret_dom.xpath('(//*[@id="activate-serie-0"]/*)[2]')[0].text
+        )
+
+        # check the title of the chart
+        # find the text by using findtext with the namespaced ({...})
+        # name of the title node. Not sure why a missing namespace
+        # ('.//title') doesn't match.
+        self.assertEqual(
+            ret_dom.findtext('.//{http://www.w3.org/2000/svg}title'),
+            'Tickets grouped by status \n(Roundup issue tracker)'
+        )
+
+
+        # Another way to find it is by namespace css syntax
+        # Must use the svg namespace by prepending svg| to the tag.
+        # Without the namespace it returns nothing.
+        # Look for the title that is the direct child of the svg (root)
+        # element.
+        from lxml.cssselect import CSSSelector
+        css = CSSSelector('svg|svg > svg|title',
+                           namespaces={"svg": 'http://www.w3.org/2000/svg'})
+        self.assertEqual(
+            css(ret_dom)[0].text,
+            'Tickets grouped by status \n(Roundup issue tracker)'
+        )
+
+         # test the value of serie-0 In formward sort, there are
+        # 2 items in status 1
+        css = CSSSelector('svg|g.series.serie-0 svg|desc.value',
+                           namespaces={"svg": 'http://www.w3.org/2000/svg'})
+        self.assertEqual(
+            css(ret_dom)[0].text,
+            "2"
+        )
+
+        '''
+        # Remove the surrounding block string marker of three '
+        # to uncomment this to dump the xml to a file
+        with open('/tmp/f.xml', 'wb') as f:
+            f.write(etree.tostring(ret_dom, pretty_print=True))
+        '''
+
+    def testPiechartReverseSortStatus(self):
+        """Test the piechart action.
+
+           Each test consists of creating the data,
+           creating the client
+           verifying the returned data.
+
+           In this case, the first element in the legend
+           should be the one with the highest count. In case of
+           a tie, it should order by the default order of status.
+
+           The status of 1 (unread) has a count of 2, so it
+           is first in the legend aka serie-0.
+        """
+        self.createData()
+
+        cl = self.createClient(
+            {'@group': '-status', '@columns': 'id,title'}
+            )
+
+        ret = self.instance.cgi_actions['piechart'](cl).handle()
+
+        self.assertTrue(ret.startswith(b'<svg '))
+        self.assertTrue(ret.endswith(b'</svg>\n'))
+        self.assertIn(b'class="title plot_title"', ret)
+
+        import lxml.etree as etree
+        ret_dom = etree.fromstring(ret)
+        self.assertEqual('unread',
+            ret_dom[5].getchildren()[6].getchildren()[0].getchildren()[1].text)
+
+        # same as above just different method
+        self.assertEqual('unread',
+            ret_dom.xpath('(//*[@class="legends"])[1]'
+                          '//*[@id="activate-serie-0"]/*')[1].text)
+
+        # check the title of the chart
+        # find the text by using findtext with the namespaced ({...})
+        # name of the title node. Not sure why a missing namespace
+        # ('.//title') doesn't match.
+        self.assertEqual(
+            ret_dom.findtext('.//{http://www.w3.org/2000/svg}title'),
+            'Tickets grouped by status \n(Roundup issue tracker)'
+        )
+    
+    def testPieChartPrioritySortStatus(self):
+        self.createData()
+
+        cl = self.createClient(
+            {'@group': 'priority', '@columns': 'id,title'}
+            )
+        ret = self.instance.cgi_actions['piechart'](cl).handle()
+        self.assertTrue(ret.startswith(b'<svg '))
+        self.assertTrue(ret.endswith(b'</svg>\n'))
+        # is there a class identifying the plot_title
+        self.assertIn(b'class="title plot_title"', ret)
+        import lxml.etree as etree
+        ret_dom = etree.fromstring(ret)
+       
+
+        # same as above just different method
+        # in test database, activate-serie-1 == 'critical'
+        # in test database, activate-serie-2 == 'urgent'
+        # test accordingly
+        self.assertEqual('urgent',
+            ret_dom.xpath('(//*[@class="legends"])[1]'
+                          '//*[@id="activate-serie-2"]/*')[1].text)
+        
+        self.assertEqual(
+            ret_dom.findtext('.//{http://www.w3.org/2000/svg}title'),
+            'Tickets grouped by priority \n(Roundup issue tracker)'
+        )
+    #bargraph starts
+    def testBarchartForwardSortStatus(self):
+        self.createData()
+
+        cl = self.createClient(
+            {'@group': 'status', '@columns': 'id,title'}
+            )
+        ret = self.instance.cgi_actions['barchart'](cl).handle()
+        self.assertTrue(ret.startswith(b'<svg '))
+        self.assertTrue(ret.endswith(b'</svg>\n'))
+        # is there a class identifying the plot_title
+        self.assertIn(b'class="title plot_title"', ret)
+        import lxml.etree as etree
+        ret_dom = etree.fromstring(ret)
+       
+
+        # same as above just different method
+        # in test database, activate-serie-0 == 'unread'
+        # test accordingly
+        self.assertEqual('unread',
+            ret_dom.xpath('(//*[@class="legends"])[1]'
+                          '//*[@id="activate-serie-0"]/*')[1].text)
+        
+        self.assertEqual(
+            ret_dom.findtext('.//{http://www.w3.org/2000/svg}title'),
+            'Tickets grouped by status \n(Roundup issue tracker)'
+        )
+    def testBarchartReverseSortStatus(self):
+        self.createData()
+
+        cl = self.createClient(
+            {'@group': '-status', '@columns': 'id,title'}
+            )
+        ret = self.instance.cgi_actions['barchart'](cl).handle()
+        self.assertTrue(ret.startswith(b'<svg '))
+        self.assertTrue(ret.endswith(b'</svg>\n'))
+        # is there a class identifying the plot_title
+        self.assertIn(b'class="title plot_title"', ret)
+        import lxml.etree as etree
+        ret_dom = etree.fromstring(ret)
+       
+
+        # same as above just different method - barchart - descending
+        # in test database, activate-serie-0 == 'need-eg'
+        # test accordingly
+        self.assertEqual('need-eg',
+            ret_dom.xpath('(//*[@class="legends"])[1]'
+                          '//*[@id="activate-serie-0"]/*')[1].text)
+        
+        self.assertEqual(
+            ret_dom.findtext('.//{http://www.w3.org/2000/svg}title'),
+            'Tickets grouped by status \n(Roundup issue tracker)'
+        )
+    
+    def testBarchartPrioritySortStatus(self):
+        self.createData()
+
+        cl = self.createClient(
+            {'@group': 'priority', '@columns': 'id,title'}
+            )
+        ret = self.instance.cgi_actions['barchart'](cl).handle()
+        self.assertTrue(ret.startswith(b'<svg '))
+        self.assertTrue(ret.endswith(b'</svg>\n'))
+        # is there a class identifying the plot_title
+        self.assertIn(b'class="title plot_title"', ret)
+        import lxml.etree as etree
+        ret_dom = etree.fromstring(ret)
+       
+
+        # same as above just different method - barchart - descending
+        # in test database, activate-serie-1 == 'critical'
+        # in test database, activate-serie-2 == 'urgent'
+        # test accordingly
+        self.assertEqual('urgent',
+            ret_dom.xpath('(//*[@class="legends"])[1]'
+                          '//*[@id="activate-serie-2"]/*')[1].text)
+        
+        self.assertEqual(
+            ret_dom.findtext('.//{http://www.w3.org/2000/svg}title'),
+            'Tickets grouped by priority \n(Roundup issue tracker)'
+        )
+class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, testChartGeneration, unittest.TestCase):
 
     def setUp(self):
         FormTestParent.setUp(self)
@@ -935,9 +1262,6 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         e2 = HTMLProperty.is_edit_ok
         HTMLProperty.is_edit_ok = lambda x : True
         cl.inner_main()
-        # The original self.db has been changed. Assign the new
-        # cl.db to self.db so it gets closed at the end of the test.
-        self.db = cl.db
         _HTMLItem.is_edit_ok = e1
         HTMLProperty.is_edit_ok = e2
         self.assertEqual(len(out), 1)
@@ -974,7 +1298,6 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
             out.append(s)
         cl.write_html = wh
         cl.main()
-        self.db = cl.db # to close new db handle from main() at tearDown
         self.assertFalse('HTTP_PROXY' in cl.env)
         self.assertFalse('HTTP_PROXY' in os.environ)
 
@@ -1042,7 +1365,7 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
 
         # test with no headers. Default config requires that 1 header
         # is present and passes checks.
-        cl.main()
+        cl.inner_main()
         match_at=out[0].find('Unable to verify sufficient headers')
         print("result of subtest 1:", out[0])
         self.assertNotEqual(match_at, -1)
@@ -1051,7 +1374,7 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         # all the rest of these allow at least one header to pass
         # and the edit happens with a redirect back to issue 1
         cl.env['HTTP_REFERER'] = 'http://whoami.com/path/'
-        cl.main()
+        cl.inner_main()
         match_at=out[0].find('Redirecting to <a href="http://whoami.com/path/issue1?@ok_message')
         print("result of subtest 2:", out[0])
         self.assertEqual(match_at, 0)
@@ -1059,7 +1382,7 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         del(out[0])
 
         cl.env['HTTP_ORIGIN'] = 'http://whoami.com'
-        cl.main()
+        cl.inner_main()
         match_at=out[0].find('Redirecting to <a href="http://whoami.com/path/issue1?@ok_message')
         print("result of subtest 3:", out[0])
         self.assertEqual(match_at, 0)
@@ -1073,7 +1396,7 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         # the proxy's name for the web server and not the name
         # thatis exposed to the world.
         cl.env['HTTP_HOST'] = 'frontend1.whoami.net'
-        cl.main()
+        cl.inner_main()
         match_at=out[0].find('Redirecting to <a href="http://whoami.com/path/issue1?@ok_message')
         print("result of subtest 4:", out[0])
         self.assertNotEqual(match_at, -1)
@@ -1082,7 +1405,7 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         del(out[0])
 
         cl.env['HTTP_HOST'] = 'whoami.com'
-        cl.main()
+        cl.inner_main()
         match_at=out[0].find('Redirecting to <a href="http://whoami.com/path/issue1?@ok_message')
         print("result of subtest 5:", out[0])
         self.assertEqual(match_at, 0)
@@ -1093,7 +1416,7 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         cl.env['HTTP_X_FORWARDED_HOST'] = 'whoami.net'
         # this raises an error as the header check passes and 
         # it did the edit and tries to send mail.
-        cl.main()
+        cl.inner_main()
         match_at=out[0].find('Invalid X-FORWARDED-HOST whoami.net')
         print("result of subtest 6:", out[0])
         self.assertNotEqual(match_at, -1)
@@ -1106,7 +1429,7 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
 
         # roundup will report a missing token.
         cl.db.config['WEB_CSRF_ENFORCE_TOKEN'] = 'required'
-        cl.main()
+        cl.inner_main()
         match_at=out[0].find("<p>We can't validate your session (csrf failure). Re-enter any unsaved data and try again.</p>")
         print("result of subtest 6a:", out[0], match_at)
         self.assertEqual(match_at, 33)
@@ -1115,10 +1438,10 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
 
         form2 = copy.copy(form)
         form2.update({'@csrf': 'booogus'})
-        # add a bogus csrf field to the form and rerun main
+        # add a bogus csrf field to the form and rerun the inner_main
         cl.form = db_test_base.makeForm(form2)
 
-        cl.main()
+        cl.inner_main()
         match_at=out[0].find("We can't validate your session (csrf failure). Re-enter any unsaved data and try again.")
         print("result of subtest 7:", out[0])
         self.assertEqual(match_at, 36)
@@ -1135,9 +1458,9 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         self.assertEqual(isitthere, True)
 
         form2.update({'@csrf': nonce})
-        # add a real csrf field to the form and rerun main
+        # add a real csrf field to the form and rerun the inner_main
         cl.form = db_test_base.makeForm(form2)
-        cl.main()
+        cl.inner_main()
         # csrf passes and redirects to the new issue.
         match_at=out[0].find('Redirecting to <a href="http://whoami.com/path/issue1?@ok_message')
         print("result of subtest 9:", out[0])
@@ -1145,7 +1468,7 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         del(out[0])
 
         # try a replay attack
-        cl.main()
+        cl.inner_main()
         # This should fail as token was wiped by last run.
         match_at=out[0].find("We can't validate your session (csrf failure). Re-enter any unsaved data and try again.")
         print("replay of csrf after post use", out[0])
@@ -1159,9 +1482,9 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         form2 = copy.copy(form)
         nonce = anti_csrf_nonce(cl)
         form2.update({'@csrf': nonce})
-        # add a real csrf field to the form and rerun main
+        # add a real csrf field to the form and rerun the inner_main
         cl.form = db_test_base.makeForm(form2)
-        cl.main()
+        cl.inner_main()
         # csrf passes but fail creating new issue because not a post
         match_at=out[0].find('<p>Invalid request</p>')
         print("result of subtest 11:", out[0])
@@ -1177,7 +1500,7 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         # since get deleted the token.
         cl.env.update({'REQUEST_METHOD': 'POST'})
         print(cl.env)
-        cl.main()
+        cl.inner_main()
         match_at=out[0].find("We can't validate your session (csrf failure). Re-enter any unsaved data and try again.")
         print("post failure after get", out[0])
         print("result of subtest 13:", out[0])
@@ -1190,7 +1513,7 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         # this should not redirect as it is not an API call.
         cl.db.config.WEB_ALLOWED_API_ORIGINS = "  *  "
         cl.env['HTTP_ORIGIN'] = 'https://baz.edu'
-        cl.main()
+        cl.inner_main()
         match_at=out[0].find('Invalid Origin https://baz.edu')
         print("result of subtest invalid origin:", out[0])
         self.assertEqual(match_at, 36)
@@ -1203,7 +1526,7 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         cl.db.config.WEB_ALLOWED_API_ORIGINS = "  *  "
         cl.env['HTTP_ORIGIN'] = 'http://whoami.com'
         cl.env['HTTP_REFERER'] = 'https://baz.edu/path/'
-        cl.main()
+        cl.inner_main()
         match_at=out[0].find('Invalid Referer: https://baz.edu/path/')
         print("result of subtest invalid referer:", out[0])
         self.assertEqual(match_at, 36)
@@ -1222,7 +1545,6 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         # set the password for admin so we can log in.
         passwd=password.Password('admin')
         self.db.user.set('1', password=passwd)
-        self.db.commit()
 
         out = []
         def wh(s):
@@ -1255,7 +1577,6 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         cl.write = wh # capture output
 
         cl.handle_rest()
-        self.db = cl.db # to close new db handle from main() at tearDown
         print(b2s(out[0]))
         expected="""
         {
@@ -1305,7 +1626,6 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         # Should return explanation because content type is text/plain
         # and not text/xml
         cl.handle_rest()
-        self.db = cl.db # to close new db handle from main() at tearDown
         self.assertIn('Access-Control-Allow-Credentials',
                       cl.additional_headers)
 
@@ -1336,7 +1656,6 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         # Should return explanation because content type is text/plain
         # and not text/xml
         cl.handle_rest()
-        self.db = cl.db # to close new db handle from main() at tearDown
         self.assertNotIn('Access-Control-Allow-Credentials',
                       cl.additional_headers)
 
@@ -1363,7 +1682,6 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
                             'HTTP_X_REQUESTED_WITH': 'rest',
                         }, form)
         cl.db = self.db
-        self.db = cl.db # to close new db handle from main() at tearDown
         cl.base = 'http://whoami.com/path/'
         cl._socket_op = lambda *x : True
         cl._error_message = []
@@ -1377,7 +1695,6 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
                                       
         cl.write = wh # capture output
         cl.handle_rest()
-        self.db = cl.db # to close new db handle from main() at tearDown
         self.assertEqual(json.loads(b2s(out[0])),
                          json.loads(expected)
         )
@@ -1417,7 +1734,6 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         # Should return explanation because content type is text/plain
         # and not text/xml
         cl.handle_rest()
-        self.db = cl.db # to close new db handle from main() at tearDown
         self.assertIn('Access-Control-Allow-Credentials',
                       cl.additional_headers)
 
@@ -1450,7 +1766,6 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         # Should return explanation because content type is text/plain
         # and not text/xml
         cl.handle_rest()
-        self.db = cl.db # to close new db handle from main() at tearDown
         self.assertNotIn('Access-Control-Allow-Credentials', cl.additional_headers)
 
         self.assertEqual(json.loads(b2s(out[0])),json.loads(expected))
@@ -1488,7 +1803,6 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
 
         cl.write = wh # capture output
         cl.handle_rest()
-        self.db = cl.db  # to close new db handle from handle_rest at tearDown
 
         _py3 = sys.version_info[0] > 2
 
@@ -1549,7 +1863,6 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
 
         cl.write = wh # capture output
         cl.handle_rest()
-        self.db = cl.db # to close new db handle from handle_rest at tearDown
         self.assertEqual(out[0], '')  # 204 options returns no data
 
         expected_headers = {
@@ -1604,7 +1917,6 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
 
         cl.write = wh # capture output
         cl.handle_rest()
-        self.db = cl.db # to close new db handle from handle_rest at tearDown
 
         self.assertEqual(cl.response_code, 400)
 
@@ -2386,8 +2698,7 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         # Check the returned values.
         cl.serve_static_file("issue.index.html")
         self.assertEqual(output[0][1], "text/html")
-        self.assertEqual(output[0][3],
-                         normpath('_test_cgi_form/html/issue.index.html'))
+        self.assertEqual(output[0][3], "_test_cgi_form/html/issue.index.html")
         del output[0] # reset output buffer
 
         # stop searching TEMPLATES for the files.
@@ -2400,8 +2711,7 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         cl.instance.config['STATIC_FILES'] = 'html -'
         cl.serve_static_file("issue.index.html")
         self.assertEqual(output[0][1], "text/html")
-        self.assertEqual(output[0][3],
-                         normpath('_test_cgi_form/html/issue.index.html'))
+        self.assertEqual(output[0][3], "_test_cgi_form/html/issue.index.html")
         del output[0] # reset output buffer
 
         # set the list of files and do not look at the templates directory
@@ -2410,15 +2720,13 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         # find file in first directory
         cl.serve_static_file("messagesummary.py")
         self.assertEqual(output[0][1], "text/x-python")
-        self.assertEqual(output[0][3],
-                         normpath( "_test_cgi_form/detectors/messagesummary.py"))
+        self.assertEqual(output[0][3], "_test_cgi_form/detectors/messagesummary.py")
         del output[0] # reset output buffer
 
         # find file in second directory
         cl.serve_static_file("README.txt")
         self.assertEqual(output[0][1], "text/plain")
-        self.assertEqual(output[0][3],
-                         normpath("_test_cgi_form/extensions/README.txt"))
+        self.assertEqual(output[0][3], "_test_cgi_form/extensions/README.txt")
         del output[0] # reset output buffer
 
         # make sure an embedded - ends the searching.
@@ -2433,16 +2741,14 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         # find file now in first directory
         cl.serve_static_file("README.txt")
         self.assertEqual(output[0][1], "text/plain")
-        self.assertEqual(output[0][3],
-                         normpath("_test_cgi_form/detectors/README.txt"))
+        self.assertEqual(output[0][3], "_test_cgi_form/detectors/README.txt")
         del output[0] # reset output buffer
 
         cl.instance.config['STATIC_FILES'] = ' detectors extensions '
         # make sure lack of trailing - allows searching TEMPLATES
         cl.serve_static_file("issue.index.html")
         self.assertEqual(output[0][1], "text/html")
-        self.assertEqual(output[0][3],
-                         normpath("_test_cgi_form/html/issue.index.html"))
+        self.assertEqual(output[0][3], "_test_cgi_form/html/issue.index.html")
         del output[0] # reset output buffer
 
         # Make STATIC_FILES a single element.
@@ -2450,8 +2756,7 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         # find file now in first directory
         cl.serve_static_file("messagesummary.py")
         self.assertEqual(output[0][1], "text/x-python")
-        self.assertEqual(output[0][3],
-                         normpath("_test_cgi_form/detectors/messagesummary.py"))
+        self.assertEqual(output[0][3], "_test_cgi_form/detectors/messagesummary.py")
         del output[0] # reset output buffer
 
         # make sure files found in subdirectory
@@ -2460,8 +2765,7 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         # use subdir in filename
         cl.serve_static_file("css/README.css")
         self.assertEqual(output[0][1], "text/css")
-        self.assertEqual(output[0][3],
-                         normpath("_test_cgi_form/detectors/css/README.css"))
+        self.assertEqual(output[0][3], "_test_cgi_form/detectors/css/README.css")
         del output[0] # reset output buffer
         
         cl.Cache_Control['text/css'] = 'public, max-age=3600'
@@ -2471,8 +2775,7 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         f = open('_test_cgi_form/html/css/README1.css', 'a').close()
         cl.serve_static_file("README1.css")
         self.assertEqual(output[0][1], "text/css")
-        self.assertEqual(output[0][3],
-                         normpath("_test_cgi_form/html/css/README1.css"))
+        self.assertEqual(output[0][3], "_test_cgi_form/html/css/README1.css")
         self.assertTrue( "Cache-Control" in cl.additional_headers )
         self.assertEqual( cl.additional_headers,
                           {'Cache-Control': 'public, max-age=3600'} )
@@ -2481,8 +2784,7 @@ class FormTestCase(FormTestParent, StringFragmentCmpHelper, testCsvExport, unitt
         cl.Cache_Control['README1.css'] = 'public, max-age=60'
         cl.serve_static_file("README1.css")
         self.assertEqual(output[0][1], "text/css")
-        self.assertEqual(output[0][3],
-                         normpath("_test_cgi_form/html/css/README1.css"))
+        self.assertEqual(output[0][3], "_test_cgi_form/html/css/README1.css")
         self.assertTrue( "Cache-Control" in cl.additional_headers )
         self.assertEqual( cl.additional_headers,
                           {'Cache-Control': 'public, max-age=60'} )
@@ -2970,6 +3272,11 @@ class TemplateTestCase(unittest.TestCase):
         shutil.copyfile(self.dirname + "/html/user.item.html",
                         self.dirname + "/user.item.html")
 
+        # create link outside the html subdir. This should fail due to
+        # path traversal check.
+        os.symlink("../../user.item.html", subdir + "/user.item.html")
+        # it will be removed and replaced by a later test
+
         # make sure a simple non-subdir template works.
         # user.item.html exists so this works.
         # note that the extension is not included just the basename
@@ -2998,34 +3305,6 @@ class TemplateTestCase(unittest.TestCase):
         # there is an html/subdir/issue.item.html so this succeeeds
         r = t.selectTemplate("issue", "subdir/item")
         self.assertEqual("subdir/issue.item", r)
-
-    def testTemplateSubdirectory_symlink(self):
-        # test for templates in subdirectories using symlinks.
-        # this doesn't work under windows unless you have special
-        # permissions
-
-        # make the directory
-        subdir = self.dirname + "/html/subdir"
-        os.mkdir(subdir)
-
-        # get the client instance The form is needed to initialize,
-        # but not used since I call selectTemplate directly.
-        t = client.Client(self.instance, "user",
-                {'PATH_INFO':'/user', 'REQUEST_METHOD':'POST'},
-         form=db_test_base.makeForm({"@template": "item"}))
-
-        # create link outside the html subdir. This should fail due to
-        # path traversal check.
-        try:
-            os.symlink("../../user.item.html", subdir + "/user.item.html")
-        except OSError as e:
-            # windows requires special privs for symbolic links
-            allowed_error = 'A required privilege is not held by the client'
-            if not e.args[1] == allowed_error:
-                raise
-            pytest.skip("User does not have permission to create symbolic links under Windows")
-
-        # it will be removed and replaced by a later test
 
         # there is a self.directory + /html/subdir/user.item.html file,
         # but it is a link to self.dir /user.item.html which is outside
@@ -3247,7 +3526,7 @@ class TemplateUtilsTestCase(unittest.TestCase):
         self.assertRegex(self._caplog.record_tuples[0][2], (
             r"^Found an incorrect token when expandfile applied "
             r"string subsitution on "
-            r"'[^']*[\\/]_test_template[\\/]html[\\/]file_with_broken_expand_type.js'. "
+            r"'[^']*/_test_template/html/file_with_broken_expand_type.js'. "
             r"ValueError\('incomplete format'\) was raised. Check the format "
             r"of your named conversion specifiers."))
         self._caplog.clear()
@@ -3290,7 +3569,7 @@ class TemplateUtilsTestCase(unittest.TestCase):
         # match the changable filename directory
         self.assertRegex(self._caplog.record_tuples[0][2], (
             r"When running "
-            r"expandfile\('[^']*[\\/]_test_template[\\/]html[\\/]file_with_missing.js'\) "
+            r"expandfile\('[^']*/_test_template/html/file_with_missing.js'\) "
             r"in 'home' there was no value for token: 'idontexist'."))
         self._caplog.clear()
         r = None
@@ -3325,7 +3604,7 @@ class TemplateUtilsTestCase(unittest.TestCase):
         self.assertRegex(self._caplog.record_tuples[0][2], (
             r"^Found an incorrect token when expandfile applied "
             r"string subsitution on "
-            r"'[^']*[\\/]_test_template[\\/]html[\\/]file_with_bare_%.js'. "
+            r"'[^']*/_test_template/html/file_with_bare_%.js'. "
             r"ValueError\("
             r"'unsupported format character ' ' \(0x20\) at index 12'\) was "
             r"raised. Check the format "
@@ -3415,10 +3694,6 @@ class SqliteNativeFtsCgiTest(unittest.TestCase, testFtsQuery, testCsvExport):
         self.assertEqual(result, expected)
         self.assertEqual(self.client.response_code, 400)
 
-        # handle outstanding commits since we are not using the
-        # standard entry points.
-        self.db.commit()
-
     #
     # SECURITY
     #
@@ -3464,11 +3739,6 @@ class SqliteNativeFtsCgiTest(unittest.TestCase, testFtsQuery, testCsvExport):
         with self.assertRaises(NotFound) as cm:
             actions.ExportCSVWithIdAction(cl).handle()
 
-        # commit changes so db can be properly closed on windows.
-        # because we are testing the backend method and not using
-        # cl.main() that handles db commit/close, we need to do this.
-        cl.db.commit()
-        
 class SqliteNativeCgiTest(unittest.TestCase, testFtsQuery):
     """All of the rest of the tests use anydbm as the backend.
        This class tests renderContext for fulltext search.

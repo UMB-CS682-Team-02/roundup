@@ -1,0 +1,1821 @@
+From roundup-admin@your.tracker.email.domain.example Tue Apr 04 01:44:00 2024
+FROM: roundup-admin@your.tracker.email.domain.example
+TO: roundup-admin@your.tracker.email.domain.example
+Content-Type: multipart/alternative; boundary="===============1492725095257289862=="
+MIME-Version: 1.0
+Subject: Templating Error: isinstance() arg 2 must be a type, a tuple of types, or a union
+To: roundup-admin@your.tracker.email.domain.example
+From: Roundup issue tracker <roundup-admin@your.tracker.email.domain.example>
+Date: Mon, 22 Apr 2024 21:44:00 -0400
+Precedence: bulk
+X-Roundup-Name: Roundup issue tracker
+X-Roundup-Loop: hello
+X-Roundup-Version: 2.3.0
+
+--===============1492725095257289862==
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<h1>Templating Error</h1>
+<p><b>&lt;class 'TypeError'&gt;</b>: isinstance() arg 2 must be a type, a t=
+uple of types, or a union</p>
+<p class=3D"help">Debugging information follows</p>
+<ol>
+
+<li>While evaluating the standard:'i/creation/reldate' expression on line 51
+<table class=3D"otherinfo" style=3D"font-size: 90%">
+ <tr><th colspan=3D"2" class=3D"header">Current variables:</th></tr>
+ <tr><td><strong>config</strong></td><td>&lt;roundup.configuration.CoreConf=
+ig object at 0x000002AD7FE5BD60&gt;</td></tr>
+<tr><td><strong>context</strong></td><td>&lt;HTMLClass(0x2ad00305570) issue=
+&gt;</td></tr>
+<tr><td><strong>db</strong></td><td>&lt;roundup.cgi.templating.HTMLDatabase=
+ object at 0x000002AD00305FF0&gt;</td></tr>
+<tr><td><strong>default</strong></td><td>&lt;roundup.cgi.PageTemplates.TALE=
+S.Default object at 0x000002AD7EE524D0&gt;</td></tr>
+<tr><td><strong>false</strong></td><td>0</td></tr>
+<tr><td><strong>i18n</strong></td><td>&lt;roundup.cgi.TranslationService.Nu=
+llTranslationService object at 0x000002AD7FE584C0&gt;</td></tr>
+<tr><td><strong>loop</strong></td><td>&lt;roundup.cgi.PageTemplates.TALES.S=
+afeMapping object at 0x000002AD00307A90&gt;</td></tr>
+<tr><td><strong>nothing</strong></td><td>None</td></tr>
+<tr><td><strong>options</strong></td><td>{'ok_message': ['ok message'], 'er=
+ror_message': []}</td></tr>
+<tr><td><strong>repeat</strong></td><td>&lt;roundup.cgi.PageTemplates.TALES=
+.SafeMapping object at 0x000002AD00307A90&gt;</td></tr>
+<tr><td><strong>request</strong></td><td>&lt;HTMLRequest {'_client': &lt;ro=
+undup.cgi.client.Client object at 0x000002AD7FE58B80&gt;, 'client': &lt;rou=
+ndup.cgi.client.Client object at 0x000002AD7FE58B80&gt;, 'form': FieldStora=
+ge(None, None, [MiniFieldStorage('@ok_message', 'ok message'), MiniFieldSto=
+rage('@template', 'index'), MiniFieldStorage('@search_text', 'found')]), 'e=
+nv': {'PATH_INFO': '/user', 'REQUEST_METHOD': 'POST'}, 'base': 'http://trac=
+ker.example/cgi-bin/roundup.cgi/bugs/', 'user': &lt;HTMLItem(0x2ad7fe58610)=
+ user 1&gt;, 'language': ('en',), 'classname': 'issue', 'nodeid': None, 'te=
+mplate': 'index', 'special_char': '@', 'input': &lt;function input_html4 at=
+ 0x000002AD7EEAFBE0&gt;, 'cgi_escape_attrs': &lt;function html4_cgi_escape_=
+attrs at 0x000002AD7EEAFAC0&gt;, '_context': None, 'columns': [], 'show': &=
+lt;roundup.support.TruthDict object at 0x000002AD00305390&gt;, 'sort': [], =
+'group': [], 'filter': [], 'filterspec': {}, 'search_text': 'found', 'pages=
+ize': 50, 'startwith': 0, 'dispname': None}&gt;</td></tr>
+<tr><td><strong>template</strong></td><td>&lt;roundup.cgi.engine_zopetal.Ro=
+undupPageTemplate object at 0x000002AD7FE59480&gt;</td></tr>
+<tr><td><strong>templates</strong></td><td>&lt;roundup.cgi.engine_zopetal.L=
+oader object at 0x000002AD7FE5B820&gt;</td></tr>
+<tr><td><strong>tracker</strong></td><td>&lt;roundup.instance.Tracker objec=
+t at 0x000002AD7FE58970&gt;</td></tr>
+<tr><td><strong>true</strong></td><td>1</td></tr>
+<tr><td><strong>utils</strong></td><td>&lt;roundup.cgi.templating.Templatin=
+gUtils object at 0x000002AD00307910&gt;</td></tr>
+ <tr><td><strong>attrs</strong></td><td>{'class': 'date', 'tal:condition': =
+'request/show/creation', 'tal:content': 'i/creation/reldate'}</td></tr>
+<tr><td><strong>batch</strong></td><td>&lt;roundup.cgi.templating.Batch obj=
+ect at 0x000002AD003054B0&gt;</td></tr>
+<tr><td><strong>columns</strong></td><td>'id,activity,title,creator,status'=
+</td></tr>
+<tr><td><strong>columns_showall</strong></td><td>'id,activity,title,creator=
+,assignedto,status'</td></tr>
+<tr><td><strong>i</strong></td><td>&lt;HTMLItem(0x2ad003067a0) issue 2&gt;<=
+/td></tr>
+<tr><td><strong>kw_create</strong></td><td>1</td></tr>
+<tr><td><strong>kw_edit</strong></td><td>1</td></tr>
+<tr><td><strong>kw_edit_link</strong></td><td>[]</td></tr>
+<tr><td><strong>status_notresolved</strong></td><td>'-1,1,2,3,4,5,6,7'</td>=
+</tr>
+</table></li>
+
+<li>A problem occurred in your template "issue.index.html".</li>
+
+</ol>
+<table style=3D"font-size: 80%; color: gray">
+ <tr><th class=3D"header" align=3D"left">Full traceback:</th></tr>
+ <tr><td><pre>Traceback (most recent call last):
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+client.py", line 2127, in renderContext
+    result =3D pt.render(self, None, None, **args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+engine_zopetal.py", line 92, in render
+    TALInterpreter.TALInterpreter(self._v_program, self.macros,
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 192, in __call__
+    self.interpret(self.program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 680, in do_useMacro
+    self.interpret(macro)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 705, in do_defineSlot
+    self.interpret(slot)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 617, in do_loop_tal
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 492, in do_insertText_tal
+    text =3D self.engine.evaluateText(stuff[0])
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 230, in evaluateText
+    text =3D self.evaluate(expr)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 224, in evaluate
+    return expression(self)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 198, in __call__
+    return self._eval(econtext)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 193, in _eval
+    return render(ob, econtext.vars)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 99, in render
+    ob =3D ob()
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+templating.py", line 2343, in reldate
+    interval =3D self._value - date.Date('.', translator=3Dself._client)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\date=
+.py", line 570, in __sub__
+    assert isinstance(other, Date), 'May only subtract Dates or Intervals'
+TypeError: isinstance() arg 2 must be a type, a tuple of types, or a union
+</pre></td></tr>
+</table>
+<p>&nbsp;</p>
+--===============1492725095257289862==
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Traceback (most recent call last):
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+client.py", line 2127, in renderContext
+    result =3D pt.render(self, None, None, **args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+engine_zopetal.py", line 92, in render
+    TALInterpreter.TALInterpreter(self._v_program, self.macros,
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 192, in __call__
+    self.interpret(self.program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 680, in do_useMacro
+    self.interpret(macro)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 705, in do_defineSlot
+    self.interpret(slot)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 617, in do_loop_tal
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 492, in do_insertText_tal
+    text =3D self.engine.evaluateText(stuff[0])
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 230, in evaluateText
+    text =3D self.evaluate(expr)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 224, in evaluate
+    return expression(self)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 198, in __call__
+    return self._eval(econtext)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 193, in _eval
+    return render(ob, econtext.vars)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 99, in render
+    ob =3D ob()
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+templating.py", line 2343, in reldate
+    interval =3D self._value - date.Date('.', translator=3Dself._client)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\date=
+.py", line 570, in __sub__
+    assert isinstance(other, Date), 'May only subtract Dates or Intervals'
+TypeError: isinstance() arg 2 must be a type, a tuple of types, or a union
+
+--===============1492725095257289862==--
+
+
+From roundup-admin@your.tracker.email.domain.example Tue Apr 04 01:44:03 2024
+FROM: roundup-admin@your.tracker.email.domain.example
+TO: roundup-admin@your.tracker.email.domain.example
+Content-Type: multipart/alternative; boundary="===============6193480345882992092=="
+MIME-Version: 1.0
+Subject: Templating Error: isinstance() arg 2 must be a type, a tuple of types, or a union
+To: roundup-admin@your.tracker.email.domain.example
+From: Roundup issue tracker <roundup-admin@your.tracker.email.domain.example>
+Date: Mon, 22 Apr 2024 21:44:03 -0400
+Precedence: bulk
+X-Roundup-Name: Roundup issue tracker
+X-Roundup-Loop: hello
+X-Roundup-Version: 2.3.0
+
+--===============6193480345882992092==
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<h1>Templating Error</h1>
+<p><b>&lt;class 'TypeError'&gt;</b>: isinstance() arg 2 must be a type, a t=
+uple of types, or a union</p>
+<p class=3D"help">Debugging information follows</p>
+<ol>
+
+<li>While evaluating the standard:'i/activity/reldate' expression on line 53
+<table class=3D"otherinfo" style=3D"font-size: 90%">
+ <tr><th colspan=3D"2" class=3D"header">Current variables:</th></tr>
+ <tr><td><strong>config</strong></td><td>&lt;roundup.configuration.CoreConf=
+ig object at 0x000002AD7FE594E0&gt;</td></tr>
+<tr><td><strong>context</strong></td><td>&lt;HTMLClass(0x2ad013e0490) issue=
+&gt;</td></tr>
+<tr><td><strong>db</strong></td><td>&lt;roundup.cgi.templating.HTMLDatabase=
+ object at 0x000002AD013E17B0&gt;</td></tr>
+<tr><td><strong>default</strong></td><td>&lt;roundup.cgi.PageTemplates.TALE=
+S.Default object at 0x000002AD7EE524D0&gt;</td></tr>
+<tr><td><strong>false</strong></td><td>0</td></tr>
+<tr><td><strong>i18n</strong></td><td>&lt;roundup.cgi.TranslationService.Nu=
+llTranslationService object at 0x000002AD00090D00&gt;</td></tr>
+<tr><td><strong>loop</strong></td><td>&lt;roundup.cgi.PageTemplates.TALES.S=
+afeMapping object at 0x000002AD013E0100&gt;</td></tr>
+<tr><td><strong>nothing</strong></td><td>None</td></tr>
+<tr><td><strong>options</strong></td><td>{'ok_message': [], 'error_message'=
+: []}</td></tr>
+<tr><td><strong>repeat</strong></td><td>&lt;roundup.cgi.PageTemplates.TALES=
+.SafeMapping object at 0x000002AD013E0100&gt;</td></tr>
+<tr><td><strong>request</strong></td><td>&lt;HTMLRequest {'_client': &lt;ro=
+undup.cgi.client.Client object at 0x000002AD00093940&gt;, 'client': &lt;rou=
+ndup.cgi.client.Client object at 0x000002AD00093940&gt;, 'form': FieldStora=
+ge(None, None, []), 'env': {'PATH_INFO': '/user', 'REQUEST_METHOD': 'POST'}=
+, 'base': 'http://tracker.example/cgi-bin/roundup.cgi/bugs/', 'user': &lt;H=
+TMLItem(0x2ad013e2500) user 1&gt;, 'language': ('en',), 'classname': 'issue=
+', 'nodeid': None, 'template': '', 'special_char': '@', 'input': &lt;functi=
+on input_html4 at 0x000002AD7EEAFBE0&gt;, 'cgi_escape_attrs': &lt;function =
+html4_cgi_escape_attrs at 0x000002AD7EEAFAC0&gt;, '_context': None, 'column=
+s': ['id', 'activity', 'title', 'creator', 'assignedto', 'status'], 'show':=
+ &lt;roundup.support.TruthDict object at 0x000002AD013E33A0&gt;, 'sort': [(=
+'-', 'activity')], 'group': [('+', 'priority')], 'filter': ['status'], 'fil=
+terspec': {'status': ['-1', '1', '2', '3', '4', '5', '6', '7']}, 'search_te=
+xt': None, 'pagesize': 50, 'startwith': 0, 'dispname': None}&gt;</td></tr>
+<tr><td><strong>template</strong></td><td>&lt;roundup.cgi.engine_zopetal.Ro=
+undupPageTemplate object at 0x000002AD7FE59480&gt;</td></tr>
+<tr><td><strong>templates</strong></td><td>&lt;roundup.cgi.engine_zopetal.L=
+oader object at 0x000002AD003C1FC0&gt;</td></tr>
+<tr><td><strong>tracker</strong></td><td>&lt;roundup.instance.Tracker objec=
+t at 0x000002AD7FED8910&gt;</td></tr>
+<tr><td><strong>true</strong></td><td>1</td></tr>
+<tr><td><strong>utils</strong></td><td>&lt;roundup.cgi.templating.Templatin=
+gUtils object at 0x000002AD013E0A30&gt;</td></tr>
+ <tr><td><strong>attrs</strong></td><td>{'class': 'date', 'tal:condition': =
+'request/show/activity', 'tal:content': 'i/activity/reldate'}</td></tr>
+<tr><td><strong>batch</strong></td><td>&lt;roundup.cgi.templating.Batch obj=
+ect at 0x000002AD7FE4A8C0&gt;</td></tr>
+<tr><td><strong>columns</strong></td><td>'id,activity,title,creator,status'=
+</td></tr>
+<tr><td><strong>columns_showall</strong></td><td>'id,activity,title,creator=
+,assignedto,status'</td></tr>
+<tr><td><strong>i</strong></td><td>&lt;HTMLItem(0x2ad013e1d50) issue 1&gt;<=
+/td></tr>
+<tr><td><strong>kw_create</strong></td><td>1</td></tr>
+<tr><td><strong>kw_edit</strong></td><td>1</td></tr>
+<tr><td><strong>kw_edit_link</strong></td><td>[]</td></tr>
+<tr><td><strong>status_notresolved</strong></td><td>'-1,1,2,3,4,5,6,7'</td>=
+</tr>
+</table></li>
+
+<li>A problem occurred in your template "issue.index.html".</li>
+<li>In python expression "db.issue.renderWith('index',     sort=3D[('-', 'a=
+ctivity')], group=3D[('+', 'priority')], filter=3D['status'],     columns=
+=3D['id','activity','title','creator','assignedto', 'status'],     filtersp=
+ec=3D{'status':['-1','1','2','3','4','5','6','7']})"</li>
+
+<li>While evaluating the <PythonExpr db.issue.renderWith('index',     sort=
+=3D[('-', 'activity')], group=3D[('+', 'priority')], filter=3D['status'],  =
+   columns=3D['id','activity','title','creator','assignedto', 'status'],   =
+  filterspec=3D{'status':['-1','1','2','3','4','5','6','7']})> expression o=
+n line 7
+<table class=3D"otherinfo" style=3D"font-size: 90%">
+ <tr><th colspan=3D"2" class=3D"header">Current variables:</th></tr>
+ <tr><td><strong>config</strong></td><td>&lt;roundup.configuration.CoreConf=
+ig object at 0x000002AD7FE594E0&gt;</td></tr>
+<tr><td><strong>context</strong></td><td>None</td></tr>
+<tr><td><strong>db</strong></td><td>&lt;roundup.cgi.templating.HTMLDatabase=
+ object at 0x000002AD013E0550&gt;</td></tr>
+<tr><td><strong>default</strong></td><td>&lt;roundup.cgi.PageTemplates.TALE=
+S.Default object at 0x000002AD7EE524D0&gt;</td></tr>
+<tr><td><strong>false</strong></td><td>0</td></tr>
+<tr><td><strong>i18n</strong></td><td>&lt;roundup.cgi.TranslationService.Nu=
+llTranslationService object at 0x000002AD00090D00&gt;</td></tr>
+<tr><td><strong>loop</strong></td><td>&lt;roundup.cgi.PageTemplates.TALES.S=
+afeMapping object at 0x000002AD013E05E0&gt;</td></tr>
+<tr><td><strong>nothing</strong></td><td>None</td></tr>
+<tr><td><strong>options</strong></td><td>{'ok_message': [], 'error_message'=
+: []}</td></tr>
+<tr><td><strong>repeat</strong></td><td>&lt;roundup.cgi.PageTemplates.TALES=
+.SafeMapping object at 0x000002AD013E05E0&gt;</td></tr>
+<tr><td><strong>request</strong></td><td>&lt;HTMLRequest {'_client': &lt;ro=
+undup.cgi.client.Client object at 0x000002AD00093940&gt;, 'client': &lt;rou=
+ndup.cgi.client.Client object at 0x000002AD00093940&gt;, 'form': FieldStora=
+ge(None, None, []), 'env': {'PATH_INFO': '/user', 'REQUEST_METHOD': 'POST'}=
+, 'base': 'http://tracker.example/cgi-bin/roundup.cgi/bugs/', 'user': &lt;H=
+TMLItem(0x2ad013f7a90) user 1&gt;, 'language': ('en',), 'classname': None, =
+'nodeid': None, 'template': '', 'special_char': '@', 'input': &lt;function =
+input_html4 at 0x000002AD7EEAFBE0&gt;, 'cgi_escape_attrs': &lt;function htm=
+l4_cgi_escape_attrs at 0x000002AD7EEAFAC0&gt;, '_context': None, 'columns':=
+ [], 'show': &lt;roundup.support.TruthDict object at 0x000002AD013E28F0&gt;=
+, 'sort': [], 'group': [], 'filter': [], 'filterspec': {}, 'search_text': N=
+one, 'pagesize': 50, 'startwith': 0, 'dispname': None}&gt;</td></tr>
+<tr><td><strong>template</strong></td><td>&lt;roundup.cgi.engine_zopetal.Ro=
+undupPageTemplate object at 0x000002AD00092C80&gt;</td></tr>
+<tr><td><strong>templates</strong></td><td>&lt;roundup.cgi.engine_zopetal.L=
+oader object at 0x000002AD003C1FC0&gt;</td></tr>
+<tr><td><strong>tracker</strong></td><td>&lt;roundup.instance.Tracker objec=
+t at 0x000002AD7FED8910&gt;</td></tr>
+<tr><td><strong>true</strong></td><td>1</td></tr>
+<tr><td><strong>utils</strong></td><td>&lt;roundup.cgi.templating.Templatin=
+gUtils object at 0x000002AD013E2560&gt;</td></tr>
+ <tr><td><strong>attrs</strong></td><td>{'tal:replace': "structure python:d=
+b.issue.renderWith('index',\n    sort=3D[('-', 'activity')], group=3D[('+',=
+ 'priority')], filter=3D['status'],\n    columns=3D['id','activity','title'=
+,'creator','assignedto', 'status'],\n    filterspec=3D{'status':['-1','1','=
+2','3','4','5','6','7']})"}</td></tr>
+</table></li>
+
+<li>A problem occurred in your template "home.html".</li>
+
+</ol>
+<table style=3D"font-size: 80%; color: gray">
+ <tr><th class=3D"header" align=3D"left">Full traceback:</th></tr>
+ <tr><td><pre>Traceback (most recent call last):
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+client.py", line 2127, in renderContext
+    result =3D pt.render(self, None, None, **args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+engine_zopetal.py", line 92, in render
+    TALInterpreter.TALInterpreter(self._v_program, self.macros,
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 192, in __call__
+    self.interpret(self.program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 571, in do_insertStructure_tal
+    structure =3D self.engine.evaluateStructure(expr)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 224, in evaluate
+    return expression(self)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\PythonExpr.py", line 91, in __call__
+    return f()
+  File "&lt;string&gt;", line 2, in f
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+templating.py", line 1033, in renderWith
+    return pt.render(self._client, self.classname, req, **args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+engine_zopetal.py", line 92, in render
+    TALInterpreter.TALInterpreter(self._v_program, self.macros,
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 192, in __call__
+    self.interpret(self.program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 680, in do_useMacro
+    self.interpret(macro)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 705, in do_defineSlot
+    self.interpret(slot)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 617, in do_loop_tal
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 492, in do_insertText_tal
+    text =3D self.engine.evaluateText(stuff[0])
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 230, in evaluateText
+    text =3D self.evaluate(expr)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 224, in evaluate
+    return expression(self)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 198, in __call__
+    return self._eval(econtext)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 193, in _eval
+    return render(ob, econtext.vars)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 99, in render
+    ob =3D ob()
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+templating.py", line 2343, in reldate
+    interval =3D self._value - date.Date('.', translator=3Dself._client)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\date=
+.py", line 570, in __sub__
+    assert isinstance(other, Date), 'May only subtract Dates or Intervals'
+TypeError: isinstance() arg 2 must be a type, a tuple of types, or a union
+</pre></td></tr>
+</table>
+<p>&nbsp;</p>
+--===============6193480345882992092==
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Traceback (most recent call last):
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+client.py", line 2127, in renderContext
+    result =3D pt.render(self, None, None, **args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+engine_zopetal.py", line 92, in render
+    TALInterpreter.TALInterpreter(self._v_program, self.macros,
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 192, in __call__
+    self.interpret(self.program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 571, in do_insertStructure_tal
+    structure =3D self.engine.evaluateStructure(expr)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 224, in evaluate
+    return expression(self)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\PythonExpr.py", line 91, in __call__
+    return f()
+  File "<string>", line 2, in f
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+templating.py", line 1033, in renderWith
+    return pt.render(self._client, self.classname, req, **args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+engine_zopetal.py", line 92, in render
+    TALInterpreter.TALInterpreter(self._v_program, self.macros,
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 192, in __call__
+    self.interpret(self.program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 680, in do_useMacro
+    self.interpret(macro)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 705, in do_defineSlot
+    self.interpret(slot)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 617, in do_loop_tal
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 492, in do_insertText_tal
+    text =3D self.engine.evaluateText(stuff[0])
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 230, in evaluateText
+    text =3D self.evaluate(expr)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 224, in evaluate
+    return expression(self)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 198, in __call__
+    return self._eval(econtext)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 193, in _eval
+    return render(ob, econtext.vars)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 99, in render
+    ob =3D ob()
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+templating.py", line 2343, in reldate
+    interval =3D self._value - date.Date('.', translator=3Dself._client)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\date=
+.py", line 570, in __sub__
+    assert isinstance(other, Date), 'May only subtract Dates or Intervals'
+TypeError: isinstance() arg 2 must be a type, a tuple of types, or a union
+
+--===============6193480345882992092==--
+
+
+From roundup-admin@your.tracker.email.domain.example Tue Apr 04 01:44:04 2024
+FROM: roundup-admin@your.tracker.email.domain.example
+TO: roundup-admin@your.tracker.email.domain.example
+Content-Type: multipart/alternative; boundary="===============8339223231118076224=="
+MIME-Version: 1.0
+Subject: Templating Error: isinstance() arg 2 must be a type, a tuple of types, or a union
+To: roundup-admin@your.tracker.email.domain.example
+From: Roundup issue tracker <roundup-admin@your.tracker.email.domain.example>
+Date: Mon, 22 Apr 2024 21:44:04 -0400
+Precedence: bulk
+X-Roundup-Name: Roundup issue tracker
+X-Roundup-Loop: hello
+X-Roundup-Version: 2.3.0
+
+--===============8339223231118076224==
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<h1>Templating Error</h1>
+<p><b>&lt;class 'TypeError'&gt;</b>: isinstance() arg 2 must be a type, a t=
+uple of types, or a union</p>
+<p class=3D"help">Debugging information follows</p>
+<ol>
+
+<li>While evaluating the standard:'i/activity/reldate' expression on line 53
+<table class=3D"otherinfo" style=3D"font-size: 90%">
+ <tr><th colspan=3D"2" class=3D"header">Current variables:</th></tr>
+ <tr><td><strong>config</strong></td><td>&lt;roundup.configuration.CoreConf=
+ig object at 0x000002AD7FE58130&gt;</td></tr>
+<tr><td><strong>context</strong></td><td>&lt;HTMLClass(0x2ad00012320) issue=
+&gt;</td></tr>
+<tr><td><strong>db</strong></td><td>&lt;roundup.cgi.templating.HTMLDatabase=
+ object at 0x000002AD00012380&gt;</td></tr>
+<tr><td><strong>default</strong></td><td>&lt;roundup.cgi.PageTemplates.TALE=
+S.Default object at 0x000002AD7EE524D0&gt;</td></tr>
+<tr><td><strong>false</strong></td><td>0</td></tr>
+<tr><td><strong>i18n</strong></td><td>&lt;roundup.cgi.TranslationService.Nu=
+llTranslationService object at 0x000002AD018EE590&gt;</td></tr>
+<tr><td><strong>loop</strong></td><td>&lt;roundup.cgi.PageTemplates.TALES.S=
+afeMapping object at 0x000002AD00013010&gt;</td></tr>
+<tr><td><strong>nothing</strong></td><td>None</td></tr>
+<tr><td><strong>options</strong></td><td>{'ok_message': [], 'error_message'=
+: ['hello world RaNdOmJunk']}</td></tr>
+<tr><td><strong>repeat</strong></td><td>&lt;roundup.cgi.PageTemplates.TALES=
+.SafeMapping object at 0x000002AD00013010&gt;</td></tr>
+<tr><td><strong>request</strong></td><td>&lt;HTMLRequest {'_client': &lt;ro=
+undup.cgi.client.Client object at 0x000002AD018EF0A0&gt;, 'client': &lt;rou=
+ndup.cgi.client.Client object at 0x000002AD018EF0A0&gt;, 'form': FieldStora=
+ge(None, None, [MiniFieldStorage('@template', 'item')]), 'env': {'PATH_INFO=
+': '/user', 'REQUEST_METHOD': 'POST'}, 'base': 'http://tracker.example/cgi-=
+bin/roundup.cgi/bugs/', 'user': &lt;HTMLItem(0x2ad00012e90) user 1&gt;, 'la=
+nguage': ('en',), 'classname': 'issue', 'nodeid': None, 'template': '', 'sp=
+ecial_char': '@', 'input': &lt;function input_html4 at 0x000002AD7EEAFBE0&g=
+t;, 'cgi_escape_attrs': &lt;function html4_cgi_escape_attrs at 0x000002AD7E=
+EAFAC0&gt;, '_context': None, 'columns': ['id', 'activity', 'title', 'creat=
+or', 'assignedto', 'status'], 'show': &lt;roundup.support.TruthDict object =
+at 0x000002AD000107F0&gt;, 'sort': [('-', 'activity')], 'group': [('+', 'pr=
+iority')], 'filter': ['status'], 'filterspec': {'status': ['-1', '1', '2', =
+'3', '4', '5', '6', '7']}, 'search_text': None, 'pagesize': 50, 'startwith'=
+: 0, 'dispname': None}&gt;</td></tr>
+<tr><td><strong>template</strong></td><td>&lt;roundup.cgi.engine_zopetal.Ro=
+undupPageTemplate object at 0x000002AD7FE59480&gt;</td></tr>
+<tr><td><strong>templates</strong></td><td>&lt;roundup.cgi.engine_zopetal.L=
+oader object at 0x000002AD7FF0AA40&gt;</td></tr>
+<tr><td><strong>tracker</strong></td><td>&lt;roundup.instance.Tracker objec=
+t at 0x000002AD7F3927A0&gt;</td></tr>
+<tr><td><strong>true</strong></td><td>1</td></tr>
+<tr><td><strong>utils</strong></td><td>&lt;roundup.cgi.templating.Templatin=
+gUtils object at 0x000002AD00011F60&gt;</td></tr>
+ <tr><td><strong>attrs</strong></td><td>{'class': 'date', 'tal:condition': =
+'request/show/activity', 'tal:content': 'i/activity/reldate'}</td></tr>
+<tr><td><strong>batch</strong></td><td>&lt;roundup.cgi.templating.Batch obj=
+ect at 0x000002AD018EDDB0&gt;</td></tr>
+<tr><td><strong>columns</strong></td><td>'id,activity,title,creator,status'=
+</td></tr>
+<tr><td><strong>columns_showall</strong></td><td>'id,activity,title,creator=
+,assignedto,status'</td></tr>
+<tr><td><strong>i</strong></td><td>&lt;HTMLItem(0x2ad018ef1f0) issue 1&gt;<=
+/td></tr>
+<tr><td><strong>kw_create</strong></td><td>1</td></tr>
+<tr><td><strong>kw_edit</strong></td><td>1</td></tr>
+<tr><td><strong>kw_edit_link</strong></td><td>[]</td></tr>
+<tr><td><strong>status_notresolved</strong></td><td>'-1,1,2,3,4,5,6,7'</td>=
+</tr>
+</table></li>
+
+<li>A problem occurred in your template "issue.index.html".</li>
+<li>In python expression "db.issue.renderWith('index',     sort=3D[('-', 'a=
+ctivity')], group=3D[('+', 'priority')], filter=3D['status'],     columns=
+=3D['id','activity','title','creator','assignedto', 'status'],     filtersp=
+ec=3D{'status':['-1','1','2','3','4','5','6','7']})"</li>
+
+<li>While evaluating the <PythonExpr db.issue.renderWith('index',     sort=
+=3D[('-', 'activity')], group=3D[('+', 'priority')], filter=3D['status'],  =
+   columns=3D['id','activity','title','creator','assignedto', 'status'],   =
+  filterspec=3D{'status':['-1','1','2','3','4','5','6','7']})> expression o=
+n line 7
+<table class=3D"otherinfo" style=3D"font-size: 90%">
+ <tr><th colspan=3D"2" class=3D"header">Current variables:</th></tr>
+ <tr><td><strong>config</strong></td><td>&lt;roundup.configuration.CoreConf=
+ig object at 0x000002AD7FE58130&gt;</td></tr>
+<tr><td><strong>context</strong></td><td>None</td></tr>
+<tr><td><strong>db</strong></td><td>&lt;roundup.cgi.templating.HTMLDatabase=
+ object at 0x000002AD000133D0&gt;</td></tr>
+<tr><td><strong>default</strong></td><td>&lt;roundup.cgi.PageTemplates.TALE=
+S.Default object at 0x000002AD7EE524D0&gt;</td></tr>
+<tr><td><strong>false</strong></td><td>0</td></tr>
+<tr><td><strong>i18n</strong></td><td>&lt;roundup.cgi.TranslationService.Nu=
+llTranslationService object at 0x000002AD018EE590&gt;</td></tr>
+<tr><td><strong>loop</strong></td><td>&lt;roundup.cgi.PageTemplates.TALES.S=
+afeMapping object at 0x000002AD00011CF0&gt;</td></tr>
+<tr><td><strong>nothing</strong></td><td>None</td></tr>
+<tr><td><strong>options</strong></td><td>{'ok_message': [], 'error_message'=
+: ['hello world RaNdOmJunk']}</td></tr>
+<tr><td><strong>repeat</strong></td><td>&lt;roundup.cgi.PageTemplates.TALES=
+.SafeMapping object at 0x000002AD00011CF0&gt;</td></tr>
+<tr><td><strong>request</strong></td><td>&lt;HTMLRequest {'_client': &lt;ro=
+undup.cgi.client.Client object at 0x000002AD018EF0A0&gt;, 'client': &lt;rou=
+ndup.cgi.client.Client object at 0x000002AD018EF0A0&gt;, 'form': FieldStora=
+ge(None, None, [MiniFieldStorage('@template', 'item')]), 'env': {'PATH_INFO=
+': '/user', 'REQUEST_METHOD': 'POST'}, 'base': 'http://tracker.example/cgi-=
+bin/roundup.cgi/bugs/', 'user': &lt;HTMLItem(0x2ad018ee740) user 1&gt;, 'la=
+nguage': ('en',), 'classname': None, 'nodeid': None, 'template': '', 'speci=
+al_char': '@', 'input': &lt;function input_html4 at 0x000002AD7EEAFBE0&gt;,=
+ 'cgi_escape_attrs': &lt;function html4_cgi_escape_attrs at 0x000002AD7EEAF=
+AC0&gt;, '_context': None, 'columns': [], 'show': &lt;roundup.support.Truth=
+Dict object at 0x000002AD00010E80&gt;, 'sort': [], 'group': [], 'filter': [=
+], 'filterspec': {}, 'search_text': None, 'pagesize': 50, 'startwith': 0, '=
+dispname': None}&gt;</td></tr>
+<tr><td><strong>template</strong></td><td>&lt;roundup.cgi.engine_zopetal.Ro=
+undupPageTemplate object at 0x000002AD00092C80&gt;</td></tr>
+<tr><td><strong>templates</strong></td><td>&lt;roundup.cgi.engine_zopetal.L=
+oader object at 0x000002AD7FF0AA40&gt;</td></tr>
+<tr><td><strong>tracker</strong></td><td>&lt;roundup.instance.Tracker objec=
+t at 0x000002AD7F3927A0&gt;</td></tr>
+<tr><td><strong>true</strong></td><td>1</td></tr>
+<tr><td><strong>utils</strong></td><td>&lt;roundup.cgi.templating.Templatin=
+gUtils object at 0x000002AD00013040&gt;</td></tr>
+ <tr><td><strong>attrs</strong></td><td>{'tal:replace': "structure python:d=
+b.issue.renderWith('index',\n    sort=3D[('-', 'activity')], group=3D[('+',=
+ 'priority')], filter=3D['status'],\n    columns=3D['id','activity','title'=
+,'creator','assignedto', 'status'],\n    filterspec=3D{'status':['-1','1','=
+2','3','4','5','6','7']})"}</td></tr>
+</table></li>
+
+<li>A problem occurred in your template "home.html".</li>
+
+</ol>
+<table style=3D"font-size: 80%; color: gray">
+ <tr><th class=3D"header" align=3D"left">Full traceback:</th></tr>
+ <tr><td><pre>Traceback (most recent call last):
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+client.py", line 2127, in renderContext
+    result =3D pt.render(self, None, None, **args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+engine_zopetal.py", line 92, in render
+    TALInterpreter.TALInterpreter(self._v_program, self.macros,
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 192, in __call__
+    self.interpret(self.program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 571, in do_insertStructure_tal
+    structure =3D self.engine.evaluateStructure(expr)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 224, in evaluate
+    return expression(self)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\PythonExpr.py", line 91, in __call__
+    return f()
+  File "&lt;string&gt;", line 2, in f
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+templating.py", line 1033, in renderWith
+    return pt.render(self._client, self.classname, req, **args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+engine_zopetal.py", line 92, in render
+    TALInterpreter.TALInterpreter(self._v_program, self.macros,
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 192, in __call__
+    self.interpret(self.program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 680, in do_useMacro
+    self.interpret(macro)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 705, in do_defineSlot
+    self.interpret(slot)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 617, in do_loop_tal
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 492, in do_insertText_tal
+    text =3D self.engine.evaluateText(stuff[0])
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 230, in evaluateText
+    text =3D self.evaluate(expr)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 224, in evaluate
+    return expression(self)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 198, in __call__
+    return self._eval(econtext)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 193, in _eval
+    return render(ob, econtext.vars)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 99, in render
+    ob =3D ob()
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+templating.py", line 2343, in reldate
+    interval =3D self._value - date.Date('.', translator=3Dself._client)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\date=
+.py", line 570, in __sub__
+    assert isinstance(other, Date), 'May only subtract Dates or Intervals'
+TypeError: isinstance() arg 2 must be a type, a tuple of types, or a union
+</pre></td></tr>
+</table>
+<p>&nbsp;</p>
+--===============8339223231118076224==
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Traceback (most recent call last):
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+client.py", line 2127, in renderContext
+    result =3D pt.render(self, None, None, **args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+engine_zopetal.py", line 92, in render
+    TALInterpreter.TALInterpreter(self._v_program, self.macros,
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 192, in __call__
+    self.interpret(self.program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 571, in do_insertStructure_tal
+    structure =3D self.engine.evaluateStructure(expr)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 224, in evaluate
+    return expression(self)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\PythonExpr.py", line 91, in __call__
+    return f()
+  File "<string>", line 2, in f
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+templating.py", line 1033, in renderWith
+    return pt.render(self._client, self.classname, req, **args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+engine_zopetal.py", line 92, in render
+    TALInterpreter.TALInterpreter(self._v_program, self.macros,
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 192, in __call__
+    self.interpret(self.program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 680, in do_useMacro
+    self.interpret(macro)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 705, in do_defineSlot
+    self.interpret(slot)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 617, in do_loop_tal
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 492, in do_insertText_tal
+    text =3D self.engine.evaluateText(stuff[0])
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 230, in evaluateText
+    text =3D self.evaluate(expr)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 224, in evaluate
+    return expression(self)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 198, in __call__
+    return self._eval(econtext)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 193, in _eval
+    return render(ob, econtext.vars)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 99, in render
+    ob =3D ob()
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+templating.py", line 2343, in reldate
+    interval =3D self._value - date.Date('.', translator=3Dself._client)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\date=
+.py", line 570, in __sub__
+    assert isinstance(other, Date), 'May only subtract Dates or Intervals'
+TypeError: isinstance() arg 2 must be a type, a tuple of types, or a union
+
+--===============8339223231118076224==--
+
+
+From roundup-admin@your.tracker.email.domain.example Tue Apr 04 01:44:09 2024
+FROM: roundup-admin@your.tracker.email.domain.example
+TO: roundup-admin@your.tracker.email.domain.example
+Content-Type: multipart/alternative; boundary="===============5726038386693389348=="
+MIME-Version: 1.0
+Subject: Templating Error: isinstance() arg 2 must be a type, a tuple of types, or a union
+To: roundup-admin@your.tracker.email.domain.example
+From: Roundup issue tracker <roundup-admin@your.tracker.email.domain.example>
+Date: Mon, 22 Apr 2024 21:44:09 -0400
+Precedence: bulk
+X-Roundup-Name: Roundup issue tracker
+X-Roundup-Loop: hello
+X-Roundup-Version: 2.3.0
+
+--===============5726038386693389348==
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<h1>Templating Error</h1>
+<p><b>&lt;class 'TypeError'&gt;</b>: isinstance() arg 2 must be a type, a t=
+uple of types, or a union</p>
+<p class=3D"help">Debugging information follows</p>
+<ol>
+
+<li>While evaluating the standard:'i/creation/reldate' expression on line 51
+<table class=3D"otherinfo" style=3D"font-size: 90%">
+ <tr><th colspan=3D"2" class=3D"header">Current variables:</th></tr>
+ <tr><td><strong>config</strong></td><td>&lt;roundup.configuration.CoreConf=
+ig object at 0x000002AD00181F30&gt;</td></tr>
+<tr><td><strong>context</strong></td><td>&lt;HTMLClass(0x2ad00305f00) issue=
+&gt;</td></tr>
+<tr><td><strong>db</strong></td><td>&lt;roundup.cgi.templating.HTMLDatabase=
+ object at 0x000002AD00305750&gt;</td></tr>
+<tr><td><strong>default</strong></td><td>&lt;roundup.cgi.PageTemplates.TALE=
+S.Default object at 0x000002AD7EE524D0&gt;</td></tr>
+<tr><td><strong>false</strong></td><td>0</td></tr>
+<tr><td><strong>i18n</strong></td><td>&lt;roundup.cgi.TranslationService.Nu=
+llTranslationService object at 0x000002AD00307670&gt;</td></tr>
+<tr><td><strong>loop</strong></td><td>&lt;roundup.cgi.PageTemplates.TALES.S=
+afeMapping object at 0x000002AD00306FE0&gt;</td></tr>
+<tr><td><strong>nothing</strong></td><td>None</td></tr>
+<tr><td><strong>options</strong></td><td>{'ok_message': ['ok message'], 'er=
+ror_message': []}</td></tr>
+<tr><td><strong>repeat</strong></td><td>&lt;roundup.cgi.PageTemplates.TALES=
+.SafeMapping object at 0x000002AD00306FE0&gt;</td></tr>
+<tr><td><strong>request</strong></td><td>&lt;HTMLRequest {'_client': &lt;ro=
+undup.cgi.client.Client object at 0x000002AD00305B10&gt;, 'client': &lt;rou=
+ndup.cgi.client.Client object at 0x000002AD00305B10&gt;, 'form': FieldStora=
+ge(None, None, [MiniFieldStorage('@ok_message', 'ok message'), MiniFieldSto=
+rage('@template', 'index'), MiniFieldStorage('@search_text', 'found')]), 'e=
+nv': {'PATH_INFO': '/user', 'REQUEST_METHOD': 'POST'}, 'base': 'http://trac=
+ker.example/cgi-bin/roundup.cgi/bugs/', 'user': &lt;HTMLItem(0x2ad00307760)=
+ user 1&gt;, 'language': ('en',), 'classname': 'issue', 'nodeid': None, 'te=
+mplate': 'index', 'special_char': '@', 'input': &lt;function input_html4 at=
+ 0x000002AD7EEAFBE0&gt;, 'cgi_escape_attrs': &lt;function html4_cgi_escape_=
+attrs at 0x000002AD7EEAFAC0&gt;, '_context': None, 'columns': [], 'show': &=
+lt;roundup.support.TruthDict object at 0x000002AD003049D0&gt;, 'sort': [], =
+'group': [], 'filter': [], 'filterspec': {}, 'search_text': 'found', 'pages=
+ize': 50, 'startwith': 0, 'dispname': None}&gt;</td></tr>
+<tr><td><strong>template</strong></td><td>&lt;roundup.cgi.engine_zopetal.Ro=
+undupPageTemplate object at 0x000002AD7FE59480&gt;</td></tr>
+<tr><td><strong>templates</strong></td><td>&lt;roundup.cgi.engine_zopetal.L=
+oader object at 0x000002AD003C3940&gt;</td></tr>
+<tr><td><strong>tracker</strong></td><td>&lt;roundup.instance.Tracker objec=
+t at 0x000002AD00182830&gt;</td></tr>
+<tr><td><strong>true</strong></td><td>1</td></tr>
+<tr><td><strong>utils</strong></td><td>&lt;roundup.cgi.templating.Templatin=
+gUtils object at 0x000002AD003045B0&gt;</td></tr>
+ <tr><td><strong>attrs</strong></td><td>{'class': 'date', 'tal:condition': =
+'request/show/creation', 'tal:content': 'i/creation/reldate'}</td></tr>
+<tr><td><strong>batch</strong></td><td>&lt;roundup.cgi.templating.Batch obj=
+ect at 0x000002AD7FEDB280&gt;</td></tr>
+<tr><td><strong>columns</strong></td><td>'id,activity,title,creator,status'=
+</td></tr>
+<tr><td><strong>columns_showall</strong></td><td>'id,activity,title,creator=
+,assignedto,status'</td></tr>
+<tr><td><strong>i</strong></td><td>&lt;HTMLItem(0x2ad7fed98a0) issue 1&gt;<=
+/td></tr>
+<tr><td><strong>kw_create</strong></td><td>1</td></tr>
+<tr><td><strong>kw_edit</strong></td><td>1</td></tr>
+<tr><td><strong>kw_edit_link</strong></td><td>[]</td></tr>
+<tr><td><strong>status_notresolved</strong></td><td>'-1,1,2,3,4,5,6,7'</td>=
+</tr>
+</table></li>
+
+<li>A problem occurred in your template "issue.index.html".</li>
+
+</ol>
+<table style=3D"font-size: 80%; color: gray">
+ <tr><th class=3D"header" align=3D"left">Full traceback:</th></tr>
+ <tr><td><pre>Traceback (most recent call last):
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+client.py", line 2127, in renderContext
+    result =3D pt.render(self, None, None, **args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+engine_zopetal.py", line 92, in render
+    TALInterpreter.TALInterpreter(self._v_program, self.macros,
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 192, in __call__
+    self.interpret(self.program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 680, in do_useMacro
+    self.interpret(macro)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 705, in do_defineSlot
+    self.interpret(slot)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 617, in do_loop_tal
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 492, in do_insertText_tal
+    text =3D self.engine.evaluateText(stuff[0])
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 230, in evaluateText
+    text =3D self.evaluate(expr)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 224, in evaluate
+    return expression(self)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 198, in __call__
+    return self._eval(econtext)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 193, in _eval
+    return render(ob, econtext.vars)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 99, in render
+    ob =3D ob()
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+templating.py", line 2343, in reldate
+    interval =3D self._value - date.Date('.', translator=3Dself._client)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\date=
+.py", line 570, in __sub__
+    assert isinstance(other, Date), 'May only subtract Dates or Intervals'
+TypeError: isinstance() arg 2 must be a type, a tuple of types, or a union
+</pre></td></tr>
+</table>
+<p>&nbsp;</p>
+--===============5726038386693389348==
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Traceback (most recent call last):
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+client.py", line 2127, in renderContext
+    result =3D pt.render(self, None, None, **args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+engine_zopetal.py", line 92, in render
+    TALInterpreter.TALInterpreter(self._v_program, self.macros,
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 192, in __call__
+    self.interpret(self.program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 680, in do_useMacro
+    self.interpret(macro)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 705, in do_defineSlot
+    self.interpret(slot)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 617, in do_loop_tal
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 492, in do_insertText_tal
+    text =3D self.engine.evaluateText(stuff[0])
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 230, in evaluateText
+    text =3D self.evaluate(expr)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 224, in evaluate
+    return expression(self)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 198, in __call__
+    return self._eval(econtext)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 193, in _eval
+    return render(ob, econtext.vars)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 99, in render
+    ob =3D ob()
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+templating.py", line 2343, in reldate
+    interval =3D self._value - date.Date('.', translator=3Dself._client)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\date=
+.py", line 570, in __sub__
+    assert isinstance(other, Date), 'May only subtract Dates or Intervals'
+TypeError: isinstance() arg 2 must be a type, a tuple of types, or a union
+
+--===============5726038386693389348==--
+
+
+From roundup-admin@your.tracker.email.domain.example Tue Apr 04 01:44:09 2024
+FROM: roundup-admin@your.tracker.email.domain.example
+TO: roundup-admin@your.tracker.email.domain.example
+Content-Type: multipart/alternative; boundary="===============5807476801467573653=="
+MIME-Version: 1.0
+Subject: Templating Error: isinstance() arg 2 must be a type, a tuple of types, or a union
+To: roundup-admin@your.tracker.email.domain.example
+From: Roundup issue tracker <roundup-admin@your.tracker.email.domain.example>
+Date: Mon, 22 Apr 2024 21:44:09 -0400
+Precedence: bulk
+X-Roundup-Name: Roundup issue tracker
+X-Roundup-Loop: hello
+X-Roundup-Version: 2.3.0
+
+--===============5807476801467573653==
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<h1>Templating Error</h1>
+<p><b>&lt;class 'TypeError'&gt;</b>: isinstance() arg 2 must be a type, a t=
+uple of types, or a union</p>
+<p class=3D"help">Debugging information follows</p>
+<ol>
+
+<li>While evaluating the standard:'i/creation/reldate' expression on line 51
+<table class=3D"otherinfo" style=3D"font-size: 90%">
+ <tr><th colspan=3D"2" class=3D"header">Current variables:</th></tr>
+ <tr><td><strong>config</strong></td><td>&lt;roundup.configuration.CoreConf=
+ig object at 0x000002AD01DB0850&gt;</td></tr>
+<tr><td><strong>context</strong></td><td>&lt;HTMLClass(0x2ad014a6890) issue=
+&gt;</td></tr>
+<tr><td><strong>db</strong></td><td>&lt;roundup.cgi.templating.HTMLDatabase=
+ object at 0x000002AD014A5120&gt;</td></tr>
+<tr><td><strong>default</strong></td><td>&lt;roundup.cgi.PageTemplates.TALE=
+S.Default object at 0x000002AD7EE524D0&gt;</td></tr>
+<tr><td><strong>false</strong></td><td>0</td></tr>
+<tr><td><strong>i18n</strong></td><td>&lt;roundup.cgi.TranslationService.Nu=
+llTranslationService object at 0x000002AD014A63B0&gt;</td></tr>
+<tr><td><strong>loop</strong></td><td>&lt;roundup.cgi.PageTemplates.TALES.S=
+afeMapping object at 0x000002AD014A43A0&gt;</td></tr>
+<tr><td><strong>nothing</strong></td><td>None</td></tr>
+<tr><td><strong>options</strong></td><td>{'ok_message': ['ok message'], 'er=
+ror_message': []}</td></tr>
+<tr><td><strong>repeat</strong></td><td>&lt;roundup.cgi.PageTemplates.TALES=
+.SafeMapping object at 0x000002AD014A43A0&gt;</td></tr>
+<tr><td><strong>request</strong></td><td>&lt;HTMLRequest {'_client': &lt;ro=
+undup.cgi.client.Client object at 0x000002AD014A7D30&gt;, 'client': &lt;rou=
+ndup.cgi.client.Client object at 0x000002AD014A7D30&gt;, 'form': FieldStora=
+ge(None, None, [MiniFieldStorage('@ok_message', 'ok message'), MiniFieldSto=
+rage('@template', 'index'), MiniFieldStorage('@search_text', 'found')]), 'e=
+nv': {'PATH_INFO': '/user', 'REQUEST_METHOD': 'POST'}, 'base': 'http://trac=
+ker.example/cgi-bin/roundup.cgi/bugs/', 'user': &lt;HTMLItem(0x2ad014a76a0)=
+ user 1&gt;, 'language': ('en',), 'classname': 'issue', 'nodeid': None, 'te=
+mplate': 'index', 'special_char': '@', 'input': &lt;function input_html4 at=
+ 0x000002AD7EEAFBE0&gt;, 'cgi_escape_attrs': &lt;function html4_cgi_escape_=
+attrs at 0x000002AD7EEAFAC0&gt;, '_context': None, 'columns': [], 'show': &=
+lt;roundup.support.TruthDict object at 0x000002AD014A74C0&gt;, 'sort': [], =
+'group': [], 'filter': [], 'filterspec': {}, 'search_text': 'found', 'pages=
+ize': 50, 'startwith': 0, 'dispname': None}&gt;</td></tr>
+<tr><td><strong>template</strong></td><td>&lt;roundup.cgi.engine_zopetal.Ro=
+undupPageTemplate object at 0x000002AD7FE59480&gt;</td></tr>
+<tr><td><strong>templates</strong></td><td>&lt;roundup.cgi.engine_zopetal.L=
+oader object at 0x000002AD01DB15A0&gt;</td></tr>
+<tr><td><strong>tracker</strong></td><td>&lt;roundup.instance.Tracker objec=
+t at 0x000002AD01DB0F10&gt;</td></tr>
+<tr><td><strong>true</strong></td><td>1</td></tr>
+<tr><td><strong>utils</strong></td><td>&lt;roundup.cgi.templating.Templatin=
+gUtils object at 0x000002AD014A5810&gt;</td></tr>
+ <tr><td><strong>attrs</strong></td><td>{'class': 'date', 'tal:condition': =
+'request/show/creation', 'tal:content': 'i/creation/reldate'}</td></tr>
+<tr><td><strong>batch</strong></td><td>&lt;roundup.cgi.templating.Batch obj=
+ect at 0x000002AD014A6B60&gt;</td></tr>
+<tr><td><strong>columns</strong></td><td>'id,activity,title,creator,status'=
+</td></tr>
+<tr><td><strong>columns_showall</strong></td><td>'id,activity,title,creator=
+,assignedto,status'</td></tr>
+<tr><td><strong>i</strong></td><td>&lt;HTMLItem(0x2ad014a45e0) issue 1&gt;<=
+/td></tr>
+<tr><td><strong>kw_create</strong></td><td>1</td></tr>
+<tr><td><strong>kw_edit</strong></td><td>1</td></tr>
+<tr><td><strong>kw_edit_link</strong></td><td>[]</td></tr>
+<tr><td><strong>status_notresolved</strong></td><td>'-1,1,2,3,4,5,6,7'</td>=
+</tr>
+</table></li>
+
+<li>A problem occurred in your template "issue.index.html".</li>
+
+</ol>
+<table style=3D"font-size: 80%; color: gray">
+ <tr><th class=3D"header" align=3D"left">Full traceback:</th></tr>
+ <tr><td><pre>Traceback (most recent call last):
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+client.py", line 2127, in renderContext
+    result =3D pt.render(self, None, None, **args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+engine_zopetal.py", line 92, in render
+    TALInterpreter.TALInterpreter(self._v_program, self.macros,
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 192, in __call__
+    self.interpret(self.program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 680, in do_useMacro
+    self.interpret(macro)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 705, in do_defineSlot
+    self.interpret(slot)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 617, in do_loop_tal
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 492, in do_insertText_tal
+    text =3D self.engine.evaluateText(stuff[0])
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 230, in evaluateText
+    text =3D self.evaluate(expr)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 224, in evaluate
+    return expression(self)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 198, in __call__
+    return self._eval(econtext)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 193, in _eval
+    return render(ob, econtext.vars)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 99, in render
+    ob =3D ob()
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+templating.py", line 2343, in reldate
+    interval =3D self._value - date.Date('.', translator=3Dself._client)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\date=
+.py", line 570, in __sub__
+    assert isinstance(other, Date), 'May only subtract Dates or Intervals'
+TypeError: isinstance() arg 2 must be a type, a tuple of types, or a union
+</pre></td></tr>
+</table>
+<p>&nbsp;</p>
+--===============5807476801467573653==
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Traceback (most recent call last):
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+client.py", line 2127, in renderContext
+    result =3D pt.render(self, None, None, **args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+engine_zopetal.py", line 92, in render
+    TALInterpreter.TALInterpreter(self._v_program, self.macros,
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 192, in __call__
+    self.interpret(self.program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 680, in do_useMacro
+    self.interpret(macro)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 705, in do_defineSlot
+    self.interpret(slot)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 617, in do_loop_tal
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 413, in do_optTag_tal
+    self.do_optTag(stuff)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 398, in do_optTag
+    return self.no_tag(start, program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 392, in no_tag
+    self.interpret(program)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 644, in do_condition
+    self.interpret(block)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 236, in interpret
+    handlers[opcode](self, args)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+TAL\TALInterpreter.py", line 492, in do_insertText_tal
+    text =3D self.engine.evaluateText(stuff[0])
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 230, in evaluateText
+    text =3D self.evaluate(expr)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\TALES.py", line 224, in evaluate
+    return expression(self)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 198, in __call__
+    return self._eval(econtext)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 193, in _eval
+    return render(ob, econtext.vars)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+PageTemplates\Expressions.py", line 99, in render
+    ob =3D ob()
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\cgi\=
+templating.py", line 2343, in reldate
+    interval =3D self._value - date.Date('.', translator=3Dself._client)
+  File "C:\Users\gowth\Documents\UMB TRACKER PROJECT 2\roundup\roundup\date=
+.py", line 570, in __sub__
+    assert isinstance(other, Date), 'May only subtract Dates or Intervals'
+TypeError: isinstance() arg 2 must be a type, a tuple of types, or a union
+
+--===============5807476801467573653==--
+
+

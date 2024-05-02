@@ -288,6 +288,7 @@ if __name__ == '__main__':
     # a really dumb attempt to make this into a command
     # Usage: python msgfmy.py <input_file>.po <output_file>.mo
     import sys
+<<<<<<< HEAD
     input_filename = ""
     output_filename = ""
 
@@ -300,6 +301,11 @@ if __name__ == '__main__':
 
     mo = Msgfmt(input_filename).get()
     with open(output_filename, 'wb') as mofile:
+=======
+
+    mo = Msgfmt(sys.argv[1]).get()
+    with open(sys.argv[2], 'wb') as mofile:
+>>>>>>> main
         mofile.write(mo)
         mofile.close()
 

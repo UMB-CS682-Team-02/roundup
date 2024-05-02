@@ -491,6 +491,7 @@ Details are in the sections below.
 /data/\ *class* Collection
 --------------------------
 
+<<<<<<< HEAD
 When you use the ``GET`` method on a class (like ``/data/issue``), the
 ``data`` will include the number of available items in
 ``@total_size``. If the size exceeds the administrative limit (which
@@ -503,6 +504,13 @@ HTTP header ``X-Count-Total`` is the same as ``@total_size``.
 A ``collection`` list contains the id and link to the
 respective item.  For example a get on https://.../rest/data/issue
 returns::
+=======
+When performing the ``GET`` method on a class (e.g. ``/data/issue``),
+the ``data`` object includes the number of items available in
+``@total_size``. A a ``collection`` list follows which contains the id
+and link to the respective item.  For example a get on
+https://.../rest/data/issue returns::
+>>>>>>> main
 
     {
         "data": {
@@ -524,6 +532,7 @@ returns::
 Collection endpoints support a number of features as seen in the next
 sections.
 
+<<<<<<< HEAD
 Having an empty ``collection`` does not mean next next link will not
 return more data. The row limit is applied when the query is made to
 the database. The result set is then filtered, removing rows that the
@@ -535,6 +544,13 @@ data.
 
 All clients must be programmed to expect pagination decorations in the
 response. See the section on pagination below for details.
+=======
+A server may implement a default maximum number of items in the
+collection.  This can be used to prevent denial of service (DOS).  As
+a result all clients must be programmed to expect pagination
+decorations in the response. See the section on pagination below for
+details.
+>>>>>>> main
 
 Searching
 ~~~~~~~~~
@@ -604,9 +620,13 @@ searching keyword class not issue class) will return matches for
 ``Foo``, ``foobar``, ``foo taz`` etc.
 
 In all cases the field ``@total_size`` is reported which is the total
+<<<<<<< HEAD
 number of items available if you were to retrieve all of them. See
 more details in the parent section about ``@total_size`` and when it
 can return ``-1``.
+=======
+number of items available if you were to retrieve all of them.
+>>>>>>> main
 
 Other data types: Date, Interval, Integer, Number need examples and may
 need work to allow range searches. Full text search (e.g. over the
@@ -650,6 +670,7 @@ and then by id of an issue::
 
     @sort=status,-id
 
+<<<<<<< HEAD
 Grouping
 ~~~~~~~~
 
@@ -673,6 +694,8 @@ If combined with ``@sort=-id`` within each group he items would be
 sorted in descending order by id.
 
 This is useful for select elements that use optgroup.
+=======
+>>>>>>> main
 
 Pagination
 ~~~~~~~~~~
@@ -1093,7 +1116,11 @@ Does not support PUT, DELETE or PATCH.
 /data/\ *class*/\ *id* item
 ---------------------------
 
+<<<<<<< HEAD
 When you use the ``GET`` method on an item
+=======
+When performing the ``GET`` method on an item
+>>>>>>> main
 (e.g. ``/data/issue/42``), a ``link`` attribute contains the link to
 the item, ``id`` contains the id, ``type`` contains the class name
 (e.g. ``issue`` in the example) and an ``etag`` property can be used
@@ -1971,9 +1998,13 @@ There are 5 steps to set this up:
    This uses the `Adding new rest endpoints`_ mechanism.
 4. configure roundup's config.ini [web] jwt_secret with at least 32
    random characters of data. (You will get a message
+<<<<<<< HEAD
    ``Support for jwt disabled by admin.`` if it's not long
    enough.) If you have openssl installed, you can use the output
    of ``openssl rand -base64 32``.
+=======
+   ``Support for jwt disabled by admin.`` if it's not long enough.)
+>>>>>>> main
 5. add an auditor to make sure that users with this role are appending
    timelog links to the ``times`` property of the issue.
 
@@ -2214,8 +2245,12 @@ Final steps
 See the `upgrading directions`_ on how to use the ``updateconfig``
 command to generate an updated copy of config.ini using
 roundup-admin. Then set the ``JWT_secret`` to at least 32 characters
+<<<<<<< HEAD
 (more is better up to 512 bits). The output of
 ``openssl rand -base64 32`` will fulfill the minimum requirements.
+=======
+(more is better up to 512 bits).
+>>>>>>> main
 
 Writing an auditor that uses "db.user.get_roles" to see if the user
 making the change has the ``user:timelog`` role, and then comparing
